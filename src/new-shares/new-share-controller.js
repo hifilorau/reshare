@@ -1,25 +1,25 @@
 app.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.when('/bikes/new', {
-    controller: 'NewBikeCtrl',
+  $routeProvider.when('/shares/new', {
+    controller: 'NewShareCtrl',
     controllerAs: 'vm',
-    templateUrl: 'bikes/new-bike.html'
+    templateUrl: 'new-shares/new-share.html'
   });
-}]).controller('NewBikeCtrl', ['$location', 'Bike', 'bikeStore', function($location, Bike, bikeStore) {
+}]).controller('NewShareCtrl', ['$location', 'Share', 'resStore', function($location, Share, resStore) {
   var self = this;
 
-  self.bike = Bike();
+  self.share = Share();
 
-  self.doneEditing = function () {
-    bikeStore.add(self.bike);
-    self.goToBikes();
-  };
+  // self.doneEditing = function () {
+  //   bikeStore.add(self.bike);
+  //   self.goToShares();
+  // };
 
   self.cancelEditing = function () {
-    self.goToBikes();
+    self.goToShares();
   };
 
-  self.goToBikes = function () {
-    $location.path('/bikes');
+  self.goToShares = function () {
+    $location.path('/shares');
   };
 
 }]);
