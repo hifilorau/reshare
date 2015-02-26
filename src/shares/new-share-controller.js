@@ -2,7 +2,7 @@ app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/new', {
     controller: 'NewShareCtrl',
     controllerAs: 'vm',
-    templateUrl: 'new-shares/new-share.html'
+    templateUrl: 'shares/new-share.html'
   });
 }]).controller('NewShareCtrl', ['$location', 'Share', 'resStore', function($location, Share, resStore) {
   var self = this;

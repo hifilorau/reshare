@@ -1,7 +1,7 @@
 <div class="sale-input-wrap">
-      <form class="share-form" ng-submit="vm.saveShare()">
+      <form class="share-form" ng-submit="vm.addShare()">
 
-      <div class="item-wrap">
+      <div>
         <table>
           <thead>
             <tr>
@@ -12,12 +12,12 @@
 
           <tr>
             <td>
-              <input ng-model="vm.share.url">
+              <input type="text" ng-model="vm.share.url" placeholder="Insert Link Url">
             </td>
           </tr>
           <tr>
             <td>
-            <textarea ng-model="vm.share.description"></textarea>
+            <textarea ng-model="vm.share.description" placeholder="Describe your share"></textarea>
             </td>
           </tr>
           </tbody>
