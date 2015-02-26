@@ -1,6 +1,32 @@
 // The root module for our Angular application
 var app = angular.module('app', ['ngRoute']);
 
+app.config(['$routeProvider', function ($routeProvider) {
+  $routeProvider.when('/shares/new', {
+    controller: 'NewShareCtrl',
+    controllerAs: 'vm',
+    templateUrl: 'new-shares/new-share.html'
+  });
+}]).controller('NewShareCtrl', ['$location', 'Share', 'resStore', function($location, Share, resStore) {
+  var self = this;
+
+  self.share = Share();
+
+  // self.doneEditing = function () {
+  //   bikeStore.add(self.bike);
+  //   self.goToShares();
+  // };
+
+  self.cancelEditing = function () {
+    self.goToShares();
+  };
+
+  self.goToShares = function () {
+    $location.path('/shares');
+  };
+
+}]);
+
 app.controller('MainNavCtrl',
   ['$location', 'StringUtil', function($location, StringUtil) {
     var self = this;
@@ -14,6 +40,23 @@ app.controller('MainNavCtrl',
       return StringUtil.startsWith($location.path(), path);
     };
   }]);
+
+app.factory('Share', function () {
+  return function (spec) {
+    spec = spec || {};
+    return {
+
+        url: spec.url,
+        description: spec.description,
+        tags: spec.tags,
+        upvotes: spec.upvotes,
+        downvotes: spec.downvotes,
+        userId: spec.userId,
+        _id: spec._id
+
+    };
+  };
+});
 
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
@@ -29,16 +72,6 @@ app.config(['$routeProvider', function($routeProvider) {
   // TODO: load these via AJAX
   this.shares = [];
 }]);
-
-// A little string utility... no biggie
-app.factory('StringUtil', function() {
-  return {
-    startsWith: function (str, subStr) {
-      str = str || '';
-      return str.slice(0, subStr.length) === subStr;
-    }
-  };
-});
 
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
@@ -109,6 +142,16 @@ app.config(['$routeProvider', function($routeProvider) {
     self.newUser = User();
   };
 }]);
+
+// A little string utility... no biggie
+app.factory('StringUtil', function() {
+  return {
+    startsWith: function (str, subStr) {
+      str = str || '';
+      return str.slice(0, subStr.length) === subStr;
+    }
+  };
+});
 
 app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
   // My $http promise then and catch always
