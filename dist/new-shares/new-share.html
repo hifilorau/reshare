@@ -1,0 +1,77 @@
+<div class="sale-input-wrap">
+      <form class="sale-form" ng-submit="vm.bike.addLineItem()">
+
+      <div class="item-wrap">
+        <table>
+          <thead>
+            <tr>
+              <h1>Super Sale Item Details</h2>
+            </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>
+              <h2>Sale On <input ng-model="vm.bike.name"></h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>Used by <input ng-model="vm.bike.previousOwner"></h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>Year created <input ng-model="vm.bike.year"></h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>Sale Price <input ng-model="vm.bike.price"></h2>
+            </td>
+          </tr>
+          </tbody>
+       </table>
+      </div>
+
+      <div class="upgrade-wrap">
+        <table>
+          <thead>
+            <tr>
+            <h1>Upgrades and Accessories</h1>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="line in vm.bike.lineItems">
+              <td>
+                <h2><input ng-model="line.description"></h2>
+              </td>
+              <td>
+                <h2><input type="number" ng-model="line.cost" step="any"></h2>
+              </td>
+              <td>
+
+                <button type="button" ng-click="vm.bike.deleteLineItem(line)">X</button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                Total
+              </td>
+              <td>
+                {{vm.bike.total | currency}}
+              </td>
+
+              <td>
+                <button ng-click="vm.addLineItem()">+</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      </form>
+      <button ng-click="vm.doneEditing()">Done</button>
+      <button ng-click="vm.cancelEditing()">Cancel</button>
+</div>
