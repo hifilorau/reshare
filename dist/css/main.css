@@ -29,7 +29,7 @@ table {
 body {
   font-family: sans-serif;
   line-height: 1.4em;
-  background: #FFF;
+  background: #f2e574;
   color: #444; }
 
 h1 {
@@ -61,12 +61,12 @@ p {
   margin-bottom: 1em; }
 
 a {
-  color: #4F9EE5;
+  color: #129db3;
   text-decoration: none;
   outline: none; }
 
 a:hover {
-  color: #54CC14; }
+  color: #aab3bf; }
 
 td {
   padding: 0.25em 0.5em; }
@@ -93,7 +93,7 @@ button {
   margin-bottom: 1.5em; }
 
 .main-nav {
-  background: #6067b0;
+  background: #807d7f;
   color: #FFF;
   padding: 0 2em; }
 
@@ -116,7 +116,7 @@ button {
   color: inherit; }
 
 .main-nav-link:hover {
-  background: #54CC14;
+  background: #aab3bf;
   color: inherit; }
 
 .main-nav-link.active {
