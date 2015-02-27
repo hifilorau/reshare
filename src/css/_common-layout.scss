@@ -9,6 +9,10 @@
 }
 
 .main-nav {
+  display: flex;
+  justify-content: flex-end;
+  
+
   background: $accent-color-dark;
   color: #FFF;
   padding: 0 2em;

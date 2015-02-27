@@ -94,6 +94,12 @@ button {
   margin-bottom: 1.5em; }
 
 .main-nav {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   background: #807d7f;
   color: #FFF;
   padding: 0 2em; }
