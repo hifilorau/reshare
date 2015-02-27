@@ -14,10 +14,20 @@
    padding: .25em .4em;
    text-overflow: ellipsis;
    white-space: nowrap;
-   width: 8em;
-   display: block;
+   width: 6em;
+   display: inline-block;
+   height: 3em;
+
 }
 
 .user-input {
-  display:block;
+  display:inline-block;
+  height: 2em;
+}
+
+
+.user-form {
+  vertical-align: middle;
+  position: relative;
+
 }

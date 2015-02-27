@@ -1,4 +1,4 @@
-app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
+app.factory('shareService', ['$http', '$log', function($http, $log) {
   // My $http promise then and catch always
   // does the same thing, so I'll put the
   // processing of it here. What you probably
@@ -14,7 +14,7 @@ app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
   }
 
   function remove(url, id) {
-    return processAjaxPromise($http.delete(url, id))
+    return processAjaxPromise($http.delete(url, id));
 
   }
 
@@ -33,7 +33,7 @@ app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
     },
 
     getShare: function (id) {
-      return get('/api/res/' + id)
+      return get('/api/res/' + id);
     },
 
     addShare: function (share) {
