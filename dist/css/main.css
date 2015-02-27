@@ -189,7 +189,12 @@ button {
   vertical-align: middle; }
 
 .shares-list {
-  margin-bottom: 2em; }
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: absolute; }
+
+.shares-nav {
+  display: fixed; }
 
 .shares-header {
   display: inline-block; }
@@ -203,14 +208,16 @@ button {
   background: transparent;
   color: #807d7f;
   font-size: 1em;
-  display: block; }
+  display: block;
+  cursor: pointer; }
 
 .icon-down-thumb {
   font-family: "reshare-icons";
   background: transparent;
   color: #807d7f;
   font-size: 1em;
-  display: block; }
+  display: block;
+  cursor: pointer; }
 
 .count {
   display: inline-block;

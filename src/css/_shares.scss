@@ -1,5 +1,13 @@
 .shares-list {
-  margin-bottom: 2em;
+  // margin-bottom: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  // border-bottom: dotted;
+  display: absolute;
+}
+
+.shares-nav {
+  display: fixed;
 }
 
 .shares-header {
@@ -10,10 +18,7 @@
   display: inline-block;
   font-size: 3em;
 }
-//
-// .votes {
-//   display: inline-block;
-// }
+
 
 .icon-up-thumb {
   font-family: "reshare-icons";
@@ -22,6 +27,7 @@
   font-size: 1em;
   // padding: -0.5em;
   display: block;
+  cursor: pointer;
 }
 
 .icon-down-thumb {
@@ -31,6 +37,7 @@
   font-size: 1em;
   // padding: -0.5em;
   display: block;
+  cursor: pointer;
 }
 
 .count {
