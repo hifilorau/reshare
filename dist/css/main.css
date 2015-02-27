@@ -27,7 +27,7 @@ table {
   border-spacing: 0; }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Merriweather', serif;
   line-height: 1.4em;
   background: #f2e574;
   color: #444; }
@@ -153,6 +153,9 @@ button {
 .user-form {
   vertical-align: middle;
   position: relative; }
+
+.new-share__header {
+  font-family: 'Merriweather', serif; }
 
 .new-share__link {
   outline: none;
