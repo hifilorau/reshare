@@ -74,7 +74,8 @@ td {
 input, textarea {
   font-size: 1em;
   border: 1px solid #DDD;
-  padding: 0.25em; }
+  padding: 0.25em;
+  vertical-align: middle; }
 
 button {
   display: inline-block;
@@ -127,9 +128,31 @@ button {
 
 .new-share__link {
   outline: none;
-  min-width: 10em; }
+  margin-bottom: 1em;
+  min-width: 20em;
+  font-size: 1.5em;
+  height: 1.25em;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  font-weight: none;
+  vertical-align: middle; }
 
 .new-share__desc {
+  max-height: 2em;
+  resize: none;
   outline: none;
-  min-height: 5em;
-  min-width: 20em; }
+  margin-bottom: 1em;
+  min-width: 10em;
+  font-size: 1.5em;
+  height: 1.25em;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  vertical-align: middle; }
