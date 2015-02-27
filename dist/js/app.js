@@ -1,20 +1,6 @@
 // The root module for our Angular application
 var app = angular.module('app', ['ngRoute']);
 
-app.controller('MainNavCtrl',
-  ['$location', 'StringUtil', function($location, StringUtil) {
-    var self = this;
-
-    self.isActive = function (path) {
-      // The default route is a special case.
-      if (path === '/') {
-        return $location.path() === '/';
-      }
-
-      return StringUtil.startsWith($location.path(), path);
-    };
-  }]);
-
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/new', {
     controller: 'NewShareCtrl',
@@ -66,6 +52,20 @@ app.config(['$routeProvider', function($routeProvider) {
   // TODO: load these via AJAX
   this.shares = [];
 }]);
+
+app.controller('MainNavCtrl',
+  ['$location', 'StringUtil', function($location, StringUtil) {
+    var self = this;
+
+    self.isActive = function (path) {
+      // The default route is a special case.
+      if (path === '/') {
+        return $location.path() === '/';
+      }
+
+      return StringUtil.startsWith($location.path(), path);
+    };
+  }]);
 
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
