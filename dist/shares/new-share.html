@@ -1,7 +1,7 @@
 <div class="sale-input-wrap">
-      <form class="sale-form" ng-submit="vm.bike.addLineItem()">
+      <form class="share-form" ng-submit="vm.addShare()">
 
-      <div class="item-wrap">
+      <div>
         <table>
           <thead>
             <tr>
@@ -12,12 +12,12 @@
 
           <tr>
             <td>
-              <h2>Sale On <input ng-model="vm.share.url"></h2>
+              <input type="text" ng-model="vm.share.url" placeholder="Insert Link Url">
             </td>
           </tr>
           <tr>
             <td>
-              <h2>Used by <input ng-model="vm.share.description"></h2>
+            <textarea ng-model="vm.share.description" placeholder="Describe your share"></textarea>
             </td>
           </tr>
           </tbody>
@@ -25,7 +25,7 @@
       </div>
 
 
+      <button class="submit-share">Submit</button>
+      <!-- <button ng-click="vm.cancelEditing()">Cancel</button> -->
       </form>
-      <button ng-click="vm.doneEditing()">Done</button>
-      <button ng-click="vm.cancelEditing()">Cancel</button>
 </div>
