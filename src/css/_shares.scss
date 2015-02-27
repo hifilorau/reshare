@@ -1,0 +1,46 @@
+.shares-list {
+  margin-bottom: 2em;
+}
+
+.shares-header {
+  display: inline-block;
+}
+
+.add-share-button {
+  display: inline-block;
+  font-size: 3em;
+}
+//
+// .votes {
+//   display: inline-block;
+// }
+
+.icon-up-thumb {
+  font-family: "reshare-icons";
+  background: transparent;
+  color: $accent-color-dark;
+  font-size: 1em;
+  // padding: -0.5em;
+  display: block;
+}
+
+.icon-down-thumb {
+  font-family: "reshare-icons";
+  background: transparent;
+  color: $accent-color-dark;
+  font-size: 1em;
+  // padding: -0.5em;
+  display: block;
+}
+
+.count {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+.share-display {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 2em;
+}
