@@ -1,0 +1,31 @@
+<div class="sale-input-wrap">
+      <form class="share-form" ng-submit="vm.addShare()">
+
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <h1>ShareSomething</h2>
+            </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>
+              <input type="text" ng-model="vm.share.url" placeholder="Insert Link Url">
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <textarea ng-model="vm.share.description" placeholder="Describe your share"></textarea>
+            </td>
+          </tr>
+          </tbody>
+       </table>
+      </div>
+
+
+      <button class="submit-share">Submit</button>
+      <!-- <button ng-click="vm.cancelEditing()">Cancel</button> -->
+      </form>
+</div>
