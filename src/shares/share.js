@@ -4,7 +4,7 @@ app.factory('Share', function () {
     return {
         url: spec.url,
         description: spec.description,
-        tags: spec.tags
+        tags: spec.tags || 'general'
     };
   };
 });

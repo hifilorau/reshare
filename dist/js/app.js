@@ -21,7 +21,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     controllerAs: 'vm',
     templateUrl: 'shares/new-share.html'
   });
-}]).controller('NewShareCtrl', ['$location', 'Share', 'shareService', function($location, Share, resStore, shareService) {
+}]).controller('NewShareCtrl', ['$location', 'Share', 'shareService', function($location, Share, shareService) {
   var self = this;
 
   self.share = Share();
@@ -39,7 +39,10 @@ app.config(['$routeProvider', function ($routeProvider) {
     $location.path('/shares');
   };
 
-
+  self.addShare = function () {
+    alert("I SHOULD BE ADDING STUFF");
+    shareService.addShare(self.share).then(self.goToShares);
+  };
 
 }]);
 
@@ -49,7 +52,7 @@ app.factory('Share', function () {
     return {
         url: spec.url,
         description: spec.description,
-        tags: spec.tags
+        tags: spec.tags || 'general'
     };
   };
 });
@@ -58,15 +61,25 @@ app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
     templateUrl: 'shares/shares.html',
     controller: 'SharesCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    resolve: {
+      shares: ['shareService', function (shareService) {
+        return shareService.getShareList();
+      }]
+    }
   };
 
   $routeProvider.when('/', routeDefinition);
   $routeProvider.when('/shares', routeDefinition);
 }])
-.controller('SharesCtrl', 'shareService' [function (SharesCtrl, sharesService) {
+.controller('SharesCtrl', ['shares', 'shareService', 'Share', function (shares, shareService, Share) {
   // TODO: load these via AJAX
-  this.shares = [];
+
+var self = this;
+
+self.shares = shares;
+
+
 }]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -149,54 +162,6 @@ app.factory('StringUtil', function() {
   };
 });
 
-app.factory('shareService', ['$http', '$log', function($http, $log) {
-  // My $http promise then and catch always
-  // does the same thing, so I'll put the
-  // processing of it here. What you probably
-  // want to do instead is create a convenience object
-  // that makes $http calls for you in a standard
-  // way, handling post, put, delete, etc
-  function get(url) {
-    return processAjaxPromise($http.get(url));
-  }
-
-  function post(url, share) {
-    return processAjaxPromise($http.post(url, share));
-  }
-
-  function remove(url, id) {
-    return processAjaxPromise($http.delete(url, id));
-
-  }
-
-  function processAjaxPromise(p) {
-    return p.then(function (result) {
-      return result.data;
-    })
-    .catch(function (error) {
-      $log.log(error);
-    });
-  }
-
-  return {
-    list: function () {
-      return get('/api/res');
-    },
-
-    getShare: function (id) {
-      return get('/api/res/' + id);
-    },
-
-    addShare: function (share) {
-      return post('/api/res', share);
-    },
-
-    deleteShare: function (id) {
-      return remove('/api/res/' + id);
-    }
-  };
-}]);
-
 app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
   // My $http promise then and catch always
   // does the same thing, so I'll put the
@@ -232,6 +197,54 @@ app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
 
     addUser: function (user) {
       return processAjaxPromise($http.post('/api/users', user));
+    }
+  };
+}]);
+
+app.factory('shareService', ['$http', '$log', function($http, $log) {
+  // My $http promise then and catch always
+  // does the same thing, so I'll put the
+  // processing of it here. What you probably
+  // want to do instead is create a convenience object
+  // that makes $http calls for you in a standard
+  // way, handling post, put, delete, etc
+  function get(url) {
+    return processAjaxPromise($http.get(url));
+  }
+
+  function post(url, share) {
+    return processAjaxPromise($http.post(url, share));
+  }
+
+  function remove(url) {
+    return processAjaxPromise($http.delete(url));
+
+  }
+
+  function processAjaxPromise(p) {
+    return p.then(function (result) {
+      return result.data;
+    })
+    .catch(function (error) {
+      $log.log(error);
+    });
+  }
+
+  return {
+    getShareList: function () {
+      return get('/api/res');
+    },
+
+    getShare: function (id) {
+      return get('/api/res/' + id);
+    },
+
+    addShare: function (share) {
+      return post('/api/res', share);
+    },
+
+    deleteShare: function (id) {
+      return remove('/api/res/' + id);
     }
   };
 }]);
