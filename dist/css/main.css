@@ -61,12 +61,12 @@ p {
   margin-bottom: 1em; }
 
 a {
-  color: #4F9EE5;
+  color: #129db3;
   text-decoration: none;
   outline: none; }
 
 a:hover {
-  color: #54CC14; }
+  color: #aab3bf; }
 
 td {
   padding: 0.25em 0.5em; }
@@ -116,7 +116,7 @@ button {
   color: inherit; }
 
 .main-nav-link:hover {
-  background: #54CC14;
+  background: #aab3bf;
   color: inherit; }
 
 .main-nav-link.active {
@@ -124,3 +124,12 @@ button {
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
+
+.new-share__link {
+  outline: none;
+  min-width: 10em; }
+
+.new-share__desc {
+  outline: none;
+  min-height: 5em;
+  min-width: 20em; }
