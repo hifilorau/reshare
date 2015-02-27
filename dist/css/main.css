@@ -126,6 +126,9 @@ button {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
 
+.new-share__header {
+  font-family: 'Merriweather', serif; }
+
 .new-share__link {
   outline: none;
   margin-bottom: 1em;
