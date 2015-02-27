@@ -1,7 +1,7 @@
 body {
   font-family: $primary-font;
   line-height: 1.4em;
-  background: $accent-color;
+  background: white;
   color: #444;
 }
 
@@ -44,10 +44,10 @@ input, textarea {
 
 button {
   display: inline-block;
-  padding: 0.25em 0.75em;
+  // padding: 0.25em 0.75em;
   border: 0;
   background: #AAA;
   color: #FFF;
   font-size: 1em;
-
+  outline: none;
 }
