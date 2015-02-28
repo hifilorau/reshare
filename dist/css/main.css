@@ -210,7 +210,8 @@ button {
   font-size: 3em; }
 
 .votes {
-  display: inline-block; }
+  display: inline-block;
+  border: solid; }
 
 .icon-up-thumb {
   font-family: "reshare-icons";
