@@ -14,6 +14,7 @@ app.factory('voteService', ['$http', function($http) {
 
   return {
     upvote: function (id) {
+
       return post('/api/res/' + id + '/votes', { vote: 1 });
     },
 

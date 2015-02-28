@@ -39,15 +39,15 @@ input, textarea {
   font-size: 1em;
   border: 1px solid #DDD;
   padding: 0.25em;
-  vertical-align:middle;
+  vertical-align: middle;
 }
 
 button {
   display: inline-block;
   // padding: 0.25em 0.75em;
   border: 0;
-  background: #AAA;
-  color: #FFF;
+  background: $accent-color-dark ;
+  color: $bg-color;
   font-size: 1em;
   outline: none;
 }

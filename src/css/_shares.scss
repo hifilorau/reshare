@@ -1,22 +1,33 @@
-.shares-list {
-  // margin-bottom: 2em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  // border-bottom: dotted;
-  display: absolute;
-}
-
 .shares-nav {
-  display: fixed;
+  background: white;
+  // margin-top: 3em;
+  position: fixed;
+  top: 3em;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 2em 0 0 3em;
 }
 
 .shares-header {
   display: inline-block;
+  color: $accent-color-dark;
 }
 
 .add-share-button {
   display: inline-block;
   font-size: 3em;
+}
+
+.shares-list {
+  // margin-bottom: 2em;
+  padding: 1em 0 1em 3em;
+  // border-bottom: dotted;
+  position: relative;
+  top: 8em;
+  font-family: $secondary-font;
+  width: 100%;
+  min-width: 30em;
 }
 
 .votes {
@@ -50,10 +61,30 @@
   cursor: pointer;
 }
 
-
+.share-content {
+  display: inline-block;
+  // border: solid;
+  margin-left: 2em;
+  width: 50%;
+  min-width: 15em;
+}
 
 .share-display {
   display: inline-block;
   vertical-align: middle;
-  padding-left: 2em;
+  width: 60%;
+  // border: dotted;
+  margin-right: 1em;
+}
+
+.comment {
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle;
+  // border: dotted;
+  // width: 25%;
+}
+
+.comments-button {
+  font-size: 0.5em;
 }

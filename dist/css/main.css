@@ -80,13 +80,13 @@ input, textarea {
 button {
   display: inline-block;
   border: 0;
-  background: #AAA;
-  color: #FFF;
+  background: #807d7f;
+  color: #f4efef;
   font-size: 1em;
   outline: none; }
 
 .root-content {
-  padding: 2em; }
+  padding: 4em 0 0 1em; }
 
 .toolbar {
   background: #F4F4F4;
@@ -101,8 +101,13 @@ button {
   -ms-flex-pack: end;
   justify-content: flex-end;
   background: #807d7f;
-  color: #FFF;
-  padding: 0 2em; }
+  color: #f4efef;
+  padding: 0 2em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; }
 
 .app-icon {
   color: inherit; }
@@ -127,7 +132,7 @@ button {
   color: inherit; }
 
 .main-nav-link.active {
-  background: #4d5196; }
+  background: #129db3; }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
@@ -154,11 +159,18 @@ button {
 
 .user-input {
   display: inline-block;
-  height: 2em; }
+  height: 2em;
+  font-family: 'Raleway', sans-serif; }
 
 .user-form {
   vertical-align: middle;
   position: relative; }
+
+.users-name {
+  font-family: 'Raleway', sans-serif; }
+
+h1 {
+  color: #807d7f; }
 
 .new-share__header {
   font-family: 'Merriweather', serif; }
@@ -176,7 +188,11 @@ button {
   border-bottom: 1px solid #DDD;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   font-weight: none;
-  vertical-align: middle; }
+  vertical-align: middle;
+  font-family: 'Raleway', sans-serif; }
+
+.new-share__link:focus, input:hover {
+  background-color: #129db3; }
 
 .new-share__desc {
   max-height: 2em;
@@ -192,22 +208,48 @@ button {
   border-top: none;
   border-bottom: 1px solid #DDD;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-  vertical-align: middle; }
+  vertical-align: middle;
+  font-family: 'Raleway', sans-serif; }
 
-.shares-list {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  display: absolute; }
+.submit-share {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  border-radius: 3px;
+  background: #129db3; }
+
+.submit-share:active {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  border-radius: 3px;
+  background: #129db3; }
+
+.submit-share:hover {
+  color: #807d7f; }
 
 .shares-nav {
-  display: fixed; }
+  background: white;
+  position: fixed;
+  top: 3em;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 2em 0 0 3em; }
 
 .shares-header {
-  display: inline-block; }
+  display: inline-block;
+  color: #807d7f; }
 
 .add-share-button {
   display: inline-block;
   font-size: 3em; }
+
+.shares-list {
+  padding: 1em 0 1em 3em;
+  position: relative;
+  top: 8em;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  min-width: 30em; }
 
 .votes {
   display: inline-block;
@@ -233,7 +275,22 @@ button {
   display: inline-block;
   cursor: pointer; }
 
+.share-content {
+  display: inline-block;
+  margin-left: 2em;
+  width: 50%;
+  min-width: 15em; }
+
 .share-display {
   display: inline-block;
   vertical-align: middle;
-  padding-left: 2em; }
+  width: 60%;
+  margin-right: 1em; }
+
+.comment {
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle; }
+
+.comments-button {
+  font-size: 0.5em; }
