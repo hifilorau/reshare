@@ -1,5 +1,5 @@
 .root-content {
-  padding: 2em;
+  padding: 4em 0 0 1em;
 }
 
 .toolbar {
@@ -14,6 +14,11 @@
   background: $accent-color-dark;
   color: $bg-color;
   padding: 0 2em;
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .app-icon {

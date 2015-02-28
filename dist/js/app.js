@@ -132,8 +132,7 @@ self.shares = shares;
 
 }]);
 
-<<<<<<< HEAD
-=======
+
 // A little string utility... no biggie
 app.factory('StringUtil', function() {
   return {
@@ -144,7 +143,6 @@ app.factory('StringUtil', function() {
   };
 });
 
->>>>>>> b98d0afcf2e6f25ab5c38daf2b661d997e973348
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
     templateUrl: 'users/user.html',
