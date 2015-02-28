@@ -1,6 +1,18 @@
 // The root module for our Angular application
 var app = angular.module('app', ['ngRoute']);
 
+// app.factory('Comment', function () {
+//   return function (spec) {
+//     spec = spec || {};
+//     return {
+//       userId: spec.userId,
+//       text: spec.text,
+//       subjectId: 'the id of the object being commented on (usually a resource)'
+//     }
+//   };
+// });
+
+
 app.controller('MainNavCtrl',
   ['$location', 'StringUtil', function($location, StringUtil) {
     var self = this;
@@ -68,16 +80,23 @@ app.config(['$routeProvider', function($routeProvider) {
       }]
     }
   };
-
   $routeProvider.when('/', routeDefinition);
   $routeProvider.when('/shares', routeDefinition);
 }])
 .controller('SharesCtrl', ['shares', 'shareService', 'Share', 'voteService', function (shares, shareService, Share, voteService) {
-  // TODO: load these via AJAX
+
 
 var self = this;
 
 self.shares = shares;
+
+  self.upvote = function (share) {
+    voteService.upvote(share);
+  };
+
+  self.downvote = function (share) {
+    voteService.downvote(share);
+  };
 
 
 }]);
@@ -225,13 +244,13 @@ app.factory('voteService', ['$http', function($http) {
   }
 
   return {
-    upVote: function (id) {
-      alert("HELFLFDFDSF");
-      return post('/api/res/' + id + '/votes', { votes: 1 });
+    upvote: function (id) {
+      alert("DKJFS:DKLFJDKLS:J");
+      return post('/api/res/' + id + '/votes', { vote: 1 });
     },
 
-    downVote: function (id) {
-      return post('/api/res/' + id + '/votes', { votes: -1 });
+    downvote: function (id) {
+      return post('/api/res/' + id + '/votes', { vote: -1 });
     }
   };
 }]);
