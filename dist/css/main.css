@@ -86,7 +86,7 @@ button {
   outline: none; }
 
 .root-content {
-  padding: 2em; }
+  padding: 4em 0 0 1em; }
 
 .toolbar {
   background: #F4F4F4;
@@ -102,7 +102,12 @@ button {
   justify-content: flex-end;
   background: #807d7f;
   color: #f4efef;
-  padding: 0 2em; }
+  padding: 0 2em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; }
 
 .app-icon {
   color: inherit; }
@@ -221,14 +226,14 @@ h1 {
 .submit-share:hover {
   color: #807d7f; }
 
-.shares-list {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  display: absolute;
-  font-family: 'Raleway', sans-serif; }
-
 .shares-nav {
-  display: fixed; }
+  background: white;
+  position: fixed;
+  top: 3em;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 2em 0 0 3em; }
 
 .shares-header {
   display: inline-block;
@@ -237,6 +242,14 @@ h1 {
 .add-share-button {
   display: inline-block;
   font-size: 3em; }
+
+.shares-list {
+  padding: 1em 0 1em 3em;
+  position: relative;
+  top: 8em;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  min-width: 30em; }
 
 .votes {
   display: inline-block;
@@ -262,7 +275,22 @@ h1 {
   display: inline-block;
   cursor: pointer; }
 
+.share-content {
+  display: inline-block;
+  margin-left: 2em;
+  width: 50%;
+  min-width: 15em; }
+
 .share-display {
   display: inline-block;
   vertical-align: middle;
-  padding-left: 2em; }
+  width: 60%;
+  margin-right: 1em; }
+
+.comment {
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle; }
+
+.comments-button {
+  font-size: 0.5em; }

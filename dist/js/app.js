@@ -132,6 +132,7 @@ self.shares = shares;
 
 }]);
 
+
 // A little string utility... no biggie
 app.factory('StringUtil', function() {
   return {
@@ -308,7 +309,7 @@ app.factory('voteService', ['$http', function($http) {
 
   return {
     upvote: function (id) {
-      alert("DKJFS:DKLFJDKLS:J");
+      // alert("DKJFS:DKLFJDKLS:J");
       return post('/api/res/' + id + '/votes', { vote: 1 });
     },
 
