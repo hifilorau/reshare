@@ -16,6 +16,12 @@
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   font-weight: none;
   vertical-align: middle;
+  font-family: $secondary-font;
+
+}
+
+.new-share__link:focus, input:hover {
+  background-color: $alt-bold-color;
 }
 
 .new-share__desc {
@@ -33,4 +39,23 @@
   border-bottom: 1px solid #DDD;
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   vertical-align: middle;
+  font-family: $secondary-font;
+}
+
+.submit-share {
+  font-family: $secondary-font;
+  padding: 1em;
+  border-radius: 3px;
+  background: $alt-bold-color;
+}
+
+.submit-share:active {
+  font-family: $secondary-font;
+  padding: 1em;
+  border-radius: 3px;
+  background: $alt-bold-color;
+}
+
+.submit-share:hover {
+  color: $accent-color-dark;
 }

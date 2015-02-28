@@ -183,7 +183,11 @@ h1 {
   border-bottom: 1px solid #DDD;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   font-weight: none;
-  vertical-align: middle; }
+  vertical-align: middle;
+  font-family: 'Raleway', sans-serif; }
+
+.new-share__link:focus, input:hover {
+  background-color: #129db3; }
 
 .new-share__desc {
   max-height: 2em;
@@ -199,7 +203,23 @@ h1 {
   border-top: none;
   border-bottom: 1px solid #DDD;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-  vertical-align: middle; }
+  vertical-align: middle;
+  font-family: 'Raleway', sans-serif; }
+
+.submit-share {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  border-radius: 3px;
+  background: #129db3; }
+
+.submit-share:active {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  border-radius: 3px;
+  background: #129db3; }
+
+.submit-share:hover {
+  color: #807d7f; }
 
 .shares-list {
   padding-top: 1em;
