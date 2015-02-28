@@ -5,13 +5,15 @@
 
 <ul>
   <li class="shares-list" ng-repeat="share in vm.shares">
+    <div class="votes">
       <button class="icon-up-thumb" ng-click="vm.share.upVote(share)"></button>
       <div class="count">
         1
       </div>
+      <button class="icon-down-thumb" ng-click="vm.downVote(share)"></button>
       <div class="share-display">
         <a href="{{share.url}}">{{share.description}}</a>
       </div>
-      <button class="icon-down-thumb" ng-click="vm.downVote(share)"></button>
+    </div>
   </li>
 </ul>
