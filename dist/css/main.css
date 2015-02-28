@@ -217,26 +217,29 @@ h1 {
   display: inline-block;
   font-size: 3em; }
 
+.votes {
+  display: inline-block;
+  border: solid; }
+
 .icon-up-thumb {
   font-family: "reshare-icons";
   background: transparent;
   color: #807d7f;
   font-size: 1em;
-  display: block;
+  display: inline-block;
   cursor: pointer; }
+
+.count {
+  display: inline-block;
+  vertical-align: middle; }
 
 .icon-down-thumb {
   font-family: "reshare-icons";
   background: transparent;
   color: #807d7f;
   font-size: 1em;
-  display: block;
-  cursor: pointer; }
-
-.count {
   display: inline-block;
-  vertical-align: middle;
-  padding-left: 10px; }
+  cursor: pointer; }
 
 .share-display {
   display: inline-block;

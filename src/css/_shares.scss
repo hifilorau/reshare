@@ -20,6 +20,10 @@
   font-size: 3em;
 }
 
+.votes {
+  display: inline-block;
+  border: solid;
+}
 
 .icon-up-thumb {
   font-family: "reshare-icons";
@@ -27,8 +31,14 @@
   color: $accent-color-dark;
   font-size: 1em;
   // padding: -0.5em;
-  display: block;
+  display: inline-block;
   cursor: pointer;
+}
+
+.count {
+  display: inline-block;
+  vertical-align: middle;
+  // padding-left: 10px;
 }
 
 .icon-down-thumb {
@@ -37,15 +47,11 @@
   color: $accent-color-dark;
   font-size: 1em;
   // padding: -0.5em;
-  display: block;
+  display: inline-block;
   cursor: pointer;
 }
 
-.count {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 10px;
-}
+
 
 .share-display {
   display: inline-block;
