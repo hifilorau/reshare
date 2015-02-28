@@ -9,9 +9,9 @@
 <ul>
   <li class="shares-list" ng-repeat="share in vm.shares">
     <div class="votes">
-      <button class="icon-up-thumb" ng-click="vm.share.upVote(share._id)"></button>
+      <button class="icon-up-thumb" ng-click="vm.upvote(share._id)"></button>
         <div class="count">
-           {{share.upvotes - shars.downvotes}}
+           {{share.upvotes - shares.downvotes}}
         </div>
       <button class="icon-down-thumb" ng-click="vm.downvote(share._id)"></button>
     </div>
