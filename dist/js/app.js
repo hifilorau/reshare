@@ -132,6 +132,19 @@ self.shares = shares;
 
 }]);
 
+<<<<<<< HEAD
+=======
+// A little string utility... no biggie
+app.factory('StringUtil', function() {
+  return {
+    startsWith: function (str, subStr) {
+      str = str || '';
+      return str.slice(0, subStr.length) === subStr;
+    }
+  };
+});
+
+>>>>>>> b98d0afcf2e6f25ab5c38daf2b661d997e973348
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
     templateUrl: 'users/user.html',
@@ -201,16 +214,6 @@ app.config(['$routeProvider', function($routeProvider) {
     self.newUser = User();
   };
 }]);
-
-// A little string utility... no biggie
-app.factory('StringUtil', function() {
-  return {
-    startsWith: function (str, subStr) {
-      str = str || '';
-      return str.slice(0, subStr.length) === subStr;
-    }
-  };
-});
 
 // app.factory('commentService', ['$http', function($http) {
 //   function post(url, data) {

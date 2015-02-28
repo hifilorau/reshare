@@ -80,8 +80,8 @@ input, textarea {
 button {
   display: inline-block;
   border: 0;
-  background: #AAA;
-  color: #FFF;
+  background: #807d7f;
+  color: #f4efef;
   font-size: 1em;
   outline: none; }
 
@@ -101,7 +101,7 @@ button {
   -ms-flex-pack: end;
   justify-content: flex-end;
   background: #807d7f;
-  color: #FFF;
+  color: #f4efef;
   padding: 0 2em; }
 
 .app-icon {
@@ -127,7 +127,7 @@ button {
   color: inherit; }
 
 .main-nav-link.active {
-  background: #4d5196; }
+  background: #129db3; }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
@@ -154,11 +154,18 @@ button {
 
 .user-input {
   display: inline-block;
-  height: 2em; }
+  height: 2em;
+  font-family: 'Raleway', sans-serif; }
 
 .user-form {
   vertical-align: middle;
   position: relative; }
+
+.users-name {
+  font-family: 'Raleway', sans-serif; }
+
+h1 {
+  color: #807d7f; }
 
 .new-share__header {
   font-family: 'Merriweather', serif; }
@@ -197,13 +204,15 @@ button {
 .shares-list {
   padding-top: 1em;
   padding-bottom: 1em;
-  display: absolute; }
+  display: absolute;
+  font-family: 'Raleway', sans-serif; }
 
 .shares-nav {
   display: fixed; }
 
 .shares-header {
-  display: inline-block; }
+  display: inline-block;
+  color: #807d7f; }
 
 .add-share-button {
   display: inline-block;
