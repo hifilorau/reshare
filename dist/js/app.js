@@ -1,6 +1,49 @@
 // The root module for our Angular application
 var app = angular.module('app', ['ngRoute']);
 
+app.factory('Comment', function () {
+  return function (spec) {
+    spec = spec || {};
+    return {
+      userId: spec.userId,
+      text: spec.text,
+      subjectId: 'the id of the object being commented on (usually a resource)'
+    };
+  };
+});
+
+// app.config(['$routeProvider', function($routeProvider) {
+//   $routeProvider.when('/share/' + id + '/comments', {
+//     controller: 'commentsCtrl',
+//     controllerAs: 'vm',
+//     templateUrl: 'comments/comments.html'
+//     // resolve: {
+//     //   shares: ['commentService', function (commentService) {
+//     //     return commentService.getComments();
+//     //   }]
+//     // }
+//   });
+// }])
+// .controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'Share', function ($location ,Comment, commentService, Share) {
+//    alert("HEYO");
+// //
+// // var self = this;
+// //
+// // self.comments = comments;
+// //   //
+// //   // self.AddComment = function (spec) {
+// //   //   comment: spec.comment
+// //   // };
+// //
+// //   self.goToShares = function () {
+// //     $location.path('/shares');
+// //   };
+// //
+// //
+// //
+//
+// }]);
+
 app.controller('MainNavCtrl',
   ['$location', 'StringUtil', function($location, StringUtil) {
     var self = this;
@@ -169,17 +212,37 @@ app.factory('StringUtil', function() {
   };
 });
 
-// app.factory('Comment', function () {
-//   return function (spec) {
-//     spec = spec || {};
-//     return {
-//       userId: spec.userId,
-//       text: spec.text,
-//       subjectId: 'the id of the object being commented on (usually a resource)'
-//     }
-//   };
-// });
+app.factory('commentService', ['$http', function($http) {
+  function post(url, data) {
+    return processAjaxPromise($http.post(url, data));
+  }
 
+  function get(url, data) {
+    return processAjaxPromise($http.post(url, data));
+  }
+
+  function processAjaxPromise(p) {
+    return p.then(function (result) {
+      return result.data;
+    })
+    .catch(function (error) {
+      $log.log(error);
+    });
+  }
+
+  return {
+
+
+    addComment: function (id) {
+      alert("comments");
+      return post('/api/res/' + id + '/comments', { text });
+    },
+
+    listComments: function (id) {
+      return get('/api/res/' + id + '/comments');
+    }
+  };
+}]);
 
 app.factory('shareService', ['$http', '$log', function($http, $log) {
   // My $http promise then and catch always
