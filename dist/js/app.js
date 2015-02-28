@@ -44,20 +44,6 @@ app.factory('Comment', function () {
 //
 // }]);
 
-app.controller('MainNavCtrl',
-  ['$location', 'StringUtil', function($location, StringUtil) {
-    var self = this;
-
-    self.isActive = function (path) {
-      // The default route is a special case.
-      if (path === '/') {
-        return $location.path() === '/';
-      }
-
-      return StringUtil.startsWith($location.path(), path);
-    };
-  }]);
-
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/new', {
     controller: 'NewShareCtrl',
@@ -131,6 +117,20 @@ self.shares = shares;
 
 
 }]);
+
+app.controller('MainNavCtrl',
+  ['$location', 'StringUtil', function($location, StringUtil) {
+    var self = this;
+
+    self.isActive = function (path) {
+      // The default route is a special case.
+      if (path === '/') {
+        return $location.path() === '/';
+      }
+
+      return StringUtil.startsWith($location.path(), path);
+    };
+  }]);
 
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
@@ -212,37 +212,37 @@ app.factory('StringUtil', function() {
   };
 });
 
-app.factory('commentService', ['$http', function($http) {
-  function post(url, data) {
-    return processAjaxPromise($http.post(url, data));
-  }
-
-  function get(url, data) {
-    return processAjaxPromise($http.post(url, data));
-  }
-
-  function processAjaxPromise(p) {
-    return p.then(function (result) {
-      return result.data;
-    })
-    .catch(function (error) {
-      $log.log(error);
-    });
-  }
-
-  return {
-
-
-    addComment: function (id) {
-      alert("comments");
-      return post('/api/res/' + id + '/comments', { text });
-    },
-
-    listComments: function (id) {
-      return get('/api/res/' + id + '/comments');
-    }
-  };
-}]);
+// app.factory('commentService', ['$http', function($http) {
+//   function post(url, data) {
+//     return processAjaxPromise($http.post(url, data));
+//   }
+//
+//   function get(url, data) {
+//     return processAjaxPromise($http.post(url, data));
+//   }
+//
+//   function processAjaxPromise(p) {
+//     return p.then(function (result) {
+//       return result.data;
+//     })
+//     .catch(function (error) {
+//       $log.log(error);
+//     });
+//   }
+//
+//   return {
+//
+//
+//     addComment: function (id) {
+//       alert("comments");
+//       return post('/api/res/' + id + '/comments', { text });
+//     },
+//
+//     listComments: function (id) {
+//       return get('/api/res/' + id + '/comments');
+//     }
+//   };
+// }]);
 
 app.factory('shareService', ['$http', '$log', function($http, $log) {
   // My $http promise then and catch always
