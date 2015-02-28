@@ -44,6 +44,20 @@ app.factory('Comment', function () {
 //
 // }]);
 
+app.controller('MainNavCtrl',
+  ['$location', 'StringUtil', function($location, StringUtil) {
+    var self = this;
+
+    self.isActive = function (path) {
+      // The default route is a special case.
+      if (path === '/') {
+        return $location.path() === '/';
+      }
+
+      return StringUtil.startsWith($location.path(), path);
+    };
+  }]);
+
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/new', {
     controller: 'NewShareCtrl',
@@ -117,20 +131,6 @@ self.shares = shares;
 
 
 }]);
-
-app.controller('MainNavCtrl',
-  ['$location', 'StringUtil', function($location, StringUtil) {
-    var self = this;
-
-    self.isActive = function (path) {
-      // The default route is a special case.
-      if (path === '/') {
-        return $location.path() === '/';
-      }
-
-      return StringUtil.startsWith($location.path(), path);
-    };
-  }]);
 
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
@@ -308,7 +308,7 @@ app.factory('voteService', ['$http', function($http) {
 
   return {
     upvote: function (id) {
-      alert("DKJFS:DKLFJDKLS:J");
+      // alert("DKJFS:DKLFJDKLS:J");
       return post('/api/res/' + id + '/votes', { vote: 1 });
     },
 
