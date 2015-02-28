@@ -1,6 +1,18 @@
 // The root module for our Angular application
 var app = angular.module('app', ['ngRoute']);
 
+// app.factory('Comment', function () {
+//   return function (spec) {
+//     spec = spec || {};
+//     return {
+//       userId: spec.userId,
+//       text: spec.text,
+//       subjectId: 'the id of the object being commented on (usually a resource)'
+//     }
+//   };
+// });
+
+
 app.controller('MainNavCtrl',
   ['$location', 'StringUtil', function($location, StringUtil) {
     var self = this;
@@ -168,18 +180,6 @@ app.factory('StringUtil', function() {
     }
   };
 });
-
-// app.factory('Comment', function () {
-//   return function (spec) {
-//     spec = spec || {};
-//     return {
-//       userId: spec.userId,
-//       text: spec.text,
-//       subjectId: 'the id of the object being commented on (usually a resource)'
-//     }
-//   };
-// });
-
 
 app.factory('shareService', ['$http', '$log', function($http, $log) {
   // My $http promise then and catch always

@@ -11,10 +11,8 @@
 .main-nav {
   display: flex;
   justify-content: flex-end;
-  
-
   background: $accent-color-dark;
-  color: #FFF;
+  color: $bg-color;
   padding: 0 2em;
 }
 
@@ -44,5 +42,5 @@
 }
 
 .main-nav-link.active {
-  background: #4d5196;
+  background: $alt-bold-color;
 }
