@@ -13,13 +13,13 @@ app.factory('voteService', ['$http', function($http) {
   }
 
   return {
-    upVote: function (id) {
-      alert("HELFLFDFDSF");
-      return post('/api/res/' + id + '/votes', { votes: 1 });
+    upvote: function (id) {
+      alert("DKJFS:DKLFJDKLS:J");
+      return post('/api/res/' + id + '/votes', { vote: 1 });
     },
 
-    downVote: function (id) {
-      return post('/api/res/' + id + '/votes', { votes: -1 });
+    downvote: function (id) {
+      return post('/api/res/' + id + '/votes', { vote: -1 });
     }
   };
 }]);
