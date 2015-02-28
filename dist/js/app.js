@@ -132,17 +132,6 @@ self.shares = shares;
 
 }]);
 
-
-// A little string utility... no biggie
-app.factory('StringUtil', function() {
-  return {
-    startsWith: function (str, subStr) {
-      str = str || '';
-      return str.slice(0, subStr.length) === subStr;
-    }
-  };
-});
-
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
     templateUrl: 'users/user.html',
@@ -212,6 +201,16 @@ app.config(['$routeProvider', function($routeProvider) {
     self.newUser = User();
   };
 }]);
+
+// A little string utility... no biggie
+app.factory('StringUtil', function() {
+  return {
+    startsWith: function (str, subStr) {
+      str = str || '';
+      return str.slice(0, subStr.length) === subStr;
+    }
+  };
+});
 
 // app.factory('commentService', ['$http', function($http) {
 //   function post(url, data) {
