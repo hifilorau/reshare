@@ -12,37 +12,38 @@ app.factory('Comment', function () {
   };
 });
 
-// app.config(['$routeProvider', function($routeProvider) {
-//   $routeProvider.when('/share/' + id + '/comments', {
-//     controller: 'commentsCtrl',
-//     controllerAs: 'vm',
-//     templateUrl: 'comments/comments.html'
-//     // resolve: {
-//     //   shares: ['commentService', function (commentService) {
-//     //     return commentService.getComments();
-//     //   }]
-//     // }
-//   });
-// }])
-// .controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'Share', function ($location ,Comment, commentService, Share) {
-//    alert("HEYO");
-// //
-// // var self = this;
-// //
-// // self.comments = comments;
-// //   //
-// //   // self.AddComment = function (spec) {
-// //   //   comment: spec.comment
-// //   // };
-// //
-// //   self.goToShares = function () {
-// //     $location.path('/shares');
-// //   };
-// //
-// //
-// //
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/shares/:id/comments', {
+    controller: 'commentsCtrl',
+    controllerAs: 'vm',
+    templateUrl: 'comments/comments.html'
+    // resolve: {
+    //   shares: ['commentService', function (commentService) {
+    //     return commentService.listComments();
+    //   }]
+    // }
+  });
+}])
+.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', function ($location ,Comment, commentService) {
+   var self = this;
+
+
+  self.goToShares = function () {
+    $location.path('/shares');
+  };
+
 //
-// }]);
+// self.comments = comments;
+//   //
+//   // self.AddComment = function (spec) {
+//   //   comment: spec.comment
+//   // };
+//
+//
+//
+//
+
+}]);
 
 app.controller('MainNavCtrl',
   ['$location', 'StringUtil', function($location, StringUtil) {
@@ -114,19 +115,23 @@ app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', routeDefinition);
   $routeProvider.when('/shares', routeDefinition);
 }])
-.controller('SharesCtrl', ['shares', 'shareService', 'Share', 'voteService', function (shares, shareService, Share, voteService) {
+.controller('SharesCtrl', ['$location', 'shares', 'shareService', 'Share', 'voteService', function ($location, shares, shareService, Share, voteService) {
 
 
 var self = this;
 
 self.shares = shares;
 
-  self.upvote = function (share) {
-    voteService.upvote(share);
+  self.upvote = function (donkey) {
+    voteService.upvote(donkey);
   };
 
   self.downvote = function (share) {
     voteService.downvote(share);
+  };
+
+  self.goToComments = function(share) {
+    $location.path('/shares/' + share._id + '/comments');
   };
 
 
@@ -212,45 +217,40 @@ app.factory('StringUtil', function() {
   };
 });
 
-// app.factory('commentService', ['$http', function($http) {
-//   function post(url, data) {
-//     return processAjaxPromise($http.post(url, data));
-//   }
-//
-//   function get(url, data) {
-//     return processAjaxPromise($http.post(url, data));
-//   }
-//
-//   function processAjaxPromise(p) {
-//     return p.then(function (result) {
-//       return result.data;
-//     })
-//     .catch(function (error) {
-//       $log.log(error);
-//     });
-//   }
-//
-//   return {
-//
-//
-//     addComment: function (id) {
-//       alert("comments");
-//       return post('/api/res/' + id + '/comments', { text });
-//     },
-//
-//     listComments: function (id) {
-//       return get('/api/res/' + id + '/comments');
-//     }
-//   };
-// }]);
+app.factory('commentService', ['$http', function($http) {
+  function post(url, data) {
+    return processAjaxPromise($http.post(url, data));
+  }
+
+  function get(url, data) {
+    return processAjaxPromise($http.get(url, data));
+  }
+
+  function processAjaxPromise(p) {
+    return p.then(function (result) {
+      return result.data;
+    })
+    .catch(function (error) {
+      $log.log(error);
+    });
+  }
+
+  return {
+
+
+    addComment: function (id) {
+      alert("comments");
+      return post('/api/res/' + id + '/comments', { text: 'text' });
+    },
+
+    listComments: function (id) {
+      return get('/api/res/' + id + '/comments');
+    }
+  };
+}]);
 
 app.factory('shareService', ['$http', '$log', function($http, $log) {
-  // My $http promise then and catch always
-  // does the same thing, so I'll put the
-  // processing of it here. What you probably
-  // want to do instead is create a convenience object
-  // that makes $http calls for you in a standard
-  // way, handling post, put, delete, etc
+  
   function get(url) {
     return processAjaxPromise($http.get(url));
   }
@@ -308,7 +308,7 @@ app.factory('voteService', ['$http', function($http) {
 
   return {
     upvote: function (id) {
-      // alert("DKJFS:DKLFJDKLS:J");
+
       return post('/api/res/' + id + '/votes', { vote: 1 });
     },
 

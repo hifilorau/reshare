@@ -21,8 +21,10 @@
         <a href="{{share.url}}">{{share.description}}</a>
       </div>
       <!-- <button class="comment-button" ng-click="vm.goToComment()">Comment</button> -->
+
       <div class="comment">
-        <a class="comments-button" href="#/share/{{share._id}}/comments">Comments</a>
+        <!-- <a class="comments-button" href="#/share/{{share._id}}/comments">Comments</a> -->
+        <button class="comments-button" ng-click="vm.goToComments(share)">Comments</button>
       </div>
     </div>
   </li>

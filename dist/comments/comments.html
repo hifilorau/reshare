@@ -1,17 +1,21 @@
 <div class="comments-wrap">
-  <textarea class="new-comment" placeholder="What is on your mind?"></textarea>
+  Comments Page
+  <form class="new-comment" ng-submit="vm.addComment()">
+      <textarea class="new-comment" placeholder="What is on your mind?"></textarea>
+      <button class="submit-comment">Submit</button>
+  </form>
 
+  <!-- this is hardcoded original link and description -->
+
+  <span>This is the description of the link</span>
+
+  <div>Comments</div>
+
+
+<!-- // this is where comments will really go -->
   <li ng-repeat="comment in vm.comments">
     <div class="comment-text">
       {{ comments.text }}
     </div>
-
-
-
-
   </li>
-
-
-
-
 </div>
