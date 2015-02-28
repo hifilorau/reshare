@@ -204,7 +204,8 @@ h1 {
 .shares-list {
   padding-top: 1em;
   padding-bottom: 1em;
-  display: absolute; }
+  display: absolute;
+  font-family: 'Raleway', sans-serif; }
 
 .shares-nav {
   display: fixed; }

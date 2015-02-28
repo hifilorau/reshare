@@ -4,6 +4,7 @@
   padding-bottom: 1em;
   // border-bottom: dotted;
   display: absolute;
+  font-family: $secondary-font;
 }
 
 .shares-nav {
@@ -18,7 +19,7 @@
 .add-share-button {
   display: inline-block;
   font-size: 3em;
-}
+}  
 
 .votes {
   display: inline-block;
@@ -50,8 +51,6 @@
   display: inline-block;
   cursor: pointer;
 }
-
-
 
 .share-display {
   display: inline-block;
