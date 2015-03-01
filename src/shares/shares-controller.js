@@ -19,8 +19,8 @@ var self = this;
 
 self.shares = shares;
 
-  self.upvote = function (donkey) {
-    voteService.upvote(donkey);
+  self.upvote = function (share) {
+    voteService.upvote(share);
   };
 
   self.downvote = function (share) {
