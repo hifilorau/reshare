@@ -1,8 +1,5 @@
 <div class="comments-wrap">
-  <h1 class="comments-page-header">Comments Page</h1>
-
-  <span class="comment-link">{{share.description}}</span>
-
+  Comments Page
   <form class="new-comment" ng-submit="vm.addComment()">
       <textarea class="new-comment" placeholder="What is on your mind?"></textarea>
       <button class="submit-comment">Submit</button>
@@ -10,25 +7,13 @@
 
   <!-- this is hardcoded original link and description -->
 
+  <span>This is the description of the link</span>
 
-<h2 class="comments-header">Comments</h2>
-  <ul>
-    <li class="comment-instance">
-      <div class="comment-text">
-        This is a comment
-      </div>
-    </li>
-    <li class="comment-instance">
-      <div class="comment-text">
-        This is another comment
-      </div>
-    </li>
-  </ul>
-</div>
+  <div>Comments</div>
 
 
 <!-- // this is where comments will really go -->
-  <li class="comment-instance" ng-repeat="comment in vm.comments">
+  <li ng-repeat="comment in vm.comments">
     <div class="comment-text">
       {{ comments.text }}
     </div>

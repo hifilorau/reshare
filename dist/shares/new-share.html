@@ -1,11 +1,32 @@
 <div class="new-share-wrap">
-  <form class="share-form" ng-submit="vm.addShare()">
-    <div class="new-share__container">
-      <h1 class="new-share__header">Share Something</h1>
-      <input class="new-share__link" type="text" ng-model="vm.share.url" placeholder="Paste the link here">
-      <textarea class ="new-share__desc" maxlength="50" ng-model="vm.share.description" placeholder="Tell us about it!"></textarea>
-    </div>
-    <button class="submit-share">Submit</button>
-    <!-- <button ng-click="vm.cancelEditing()">Cancel</button> -->
-  </form>
+      <form class="share-form" ng-submit="vm.addShare()">
+
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <h1 class="new-share__header">Share Something</h1>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input class="new-share__link" type="text" ng-model="vm.share.url" placeholder="Paste the link here">
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <textarea class ="new-share__desc" ng-model="vm.share.description" placeholder="Tell us about it!"></textarea>
+              </td>
+            </tr>
+
+
+          </tbody>
+       </table>
+      </div>
+
+
+      <button class="submit-share">Submit</button>
+      <!-- <button ng-click="vm.cancelEditing()">Cancel</button> -->
+      </form>
 </div>
