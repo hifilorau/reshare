@@ -1,9 +1,12 @@
 <div class="comments-wrap">
   Comments Page
-  <form class="new-comment" ng-submit="vm.addComment()">
-      <textarea class="new-comment" placeholder="What is on your mind?"></textarea>
+  <form class="new-comment" ng-submit="vm.addComment(comment)">
+    <textarea ng-model="test" ng-trim="false" maxlength="500"></textarea>
+     <div>{{500 - test.length}} left</div>
       <button class="submit-comment">Submit</button>
   </form>
+
+
 
   <!-- this is hardcoded original link and description -->
 

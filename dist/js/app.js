@@ -1,64 +1,6 @@
 // The root module for our Angular application
 var app = angular.module('app', ['ngRoute']);
 
-app.factory('Comment', function () {
-  return function (spec) {
-    spec = spec || {};
-    return {
-      userId: spec.userId,
-      text: spec.text,
-      subjectId: 'the id of the object being commented on (usually a resource)'
-    };
-  };
-});
-
-app.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/shares/:id/comments', {
-    controller: 'commentsCtrl',
-    controllerAs: 'vm',
-    templateUrl: 'comments/comments.html'
-    // resolve: {
-    //   shares: ['commentService', function (commentService) {
-    //     return commentService.listComments();
-    //   }]
-    // }
-  });
-}])
-.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', function ($location ,Comment, commentService) {
-   var self = this;
-
-
-  self.goToShares = function () {
-    $location.path('/shares');
-  };
-
-//
-// self.comments = comments;
-//   //
-//   // self.AddComment = function (spec) {
-//   //   comment: spec.comment
-//   // };
-//
-//
-//
-//
-
-}]);
-
-app.controller('MainNavCtrl',
-  ['$location', 'StringUtil', function($location, StringUtil) {
-    var self = this;
-
-    self.isActive = function (path) {
-      // The default route is a special case.
-      if (path === '/') {
-        return $location.path() === '/';
-      }
-
-      return StringUtil.startsWith($location.path(), path);
-    };
-  }]);
-
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/new', {
     controller: 'NewShareCtrl',
@@ -122,8 +64,8 @@ var self = this;
 
 self.shares = shares;
 
-  self.upvote = function (donkey) {
-    voteService.upvote(donkey);
+  self.upvote = function (share) {
+    voteService.upvote(share);
   };
 
   self.downvote = function (share) {
@@ -136,6 +78,76 @@ self.shares = shares;
 
 
 }]);
+
+app.factory('Comment', function () {
+  return function (spec) {
+    spec = spec || {};
+    return {
+      userId: spec.userId,
+      text: spec.text,
+      subjectId: 'the id of the object being commented on (usually a resource)',
+      created: Date.now()
+    };
+  };
+});
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/shares/:id/comments', {
+    controller: 'commentsCtrl',
+    controllerAs: 'vm',
+    templateUrl: 'comments/comments.html',
+    resolve: {
+      shares: ['commentService', function (commentService) {
+        return commentService.listComments();
+      }]
+    }
+  });
+}])
+.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
+   var self = this;
+
+  self.comment = Comment();
+  // self.share = shareService.getShare();
+
+  self.goToShares = function () {
+    $location.path('/shares');
+  };
+
+  self.addComment = function (share) {
+    commentService.addComment(self.comment);
+  };
+
+  self.listComments = function () {
+    commentService.listComments(id);
+  };
+
+
+
+}]);
+
+app.controller('MainNavCtrl',
+  ['$location', 'StringUtil', function($location, StringUtil) {
+    var self = this;
+
+    self.isActive = function (path) {
+      // The default route is a special case.
+      if (path === '/') {
+        return $location.path() === '/';
+      }
+
+      return StringUtil.startsWith($location.path(), path);
+    };
+  }]);
+
+// A little string utility... no biggie
+app.factory('StringUtil', function() {
+  return {
+    startsWith: function (str, subStr) {
+      str = str || '';
+      return str.slice(0, subStr.length) === subStr;
+    }
+  };
+});
 
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
@@ -207,16 +219,6 @@ app.config(['$routeProvider', function($routeProvider) {
   };
 }]);
 
-// A little string utility... no biggie
-app.factory('StringUtil', function() {
-  return {
-    startsWith: function (str, subStr) {
-      str = str || '';
-      return str.slice(0, subStr.length) === subStr;
-    }
-  };
-});
-
 app.factory('commentService', ['$http', function($http) {
   function post(url, data) {
     return processAjaxPromise($http.post(url, data));
@@ -236,8 +238,6 @@ app.factory('commentService', ['$http', function($http) {
   }
 
   return {
-
-
     addComment: function (id) {
       alert("comments");
       return post('/api/res/' + id + '/comments', { text: 'text' });
