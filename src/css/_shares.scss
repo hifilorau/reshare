@@ -26,7 +26,7 @@
   position: relative;
   top: 8em;
   font-family: $secondary-font;
-  width: 100%;
+  // width: 100%;
   min-width: 30em;
 }
 
@@ -65,14 +65,14 @@
   display: inline-block;
   // border: solid;
   margin-left: 2em;
-  width: 50%;
+  // width: 50%;
   min-width: 15em;
 }
 
 .share-display {
   display: inline-block;
   vertical-align: middle;
-  width: 60%;
+  // width: 60%;
   // border: dotted;
   margin-right: 1em;
 }
@@ -87,4 +87,5 @@
 
 .comments-button {
   font-size: 0.5em;
+  cursor: pointer;
 }
