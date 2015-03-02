@@ -83,7 +83,8 @@ button {
   background: #807d7f;
   color: #f4efef;
   font-size: 1em;
-  outline: none; }
+  outline: none;
+  cursor: pointer; }
 
 .root-content {
   padding: 4em 0 0 1em; }
@@ -172,6 +173,9 @@ button {
 h1 {
   color: #807d7f; }
 
+.new-share__container {
+  padding: 2em; }
+
 .new-share__header {
   font-family: 'Merriweather', serif; }
 
@@ -215,7 +219,8 @@ h1 {
   font-family: 'Raleway', sans-serif;
   padding: 1em;
   border-radius: 3px;
-  background: #129db3; }
+  background: #129db3;
+  margin-left: 2em; }
 
 .submit-share:active {
   font-family: 'Raleway', sans-serif;
@@ -248,7 +253,6 @@ h1 {
   position: relative;
   top: 8em;
   font-family: 'Raleway', sans-serif;
-  width: 100%;
   min-width: 30em; }
 
 .votes {
@@ -278,13 +282,11 @@ h1 {
 .share-content {
   display: inline-block;
   margin-left: 2em;
-  width: 50%;
   min-width: 15em; }
 
 .share-display {
   display: inline-block;
   vertical-align: middle;
-  width: 60%;
   margin-right: 1em; }
 
 .comment {
@@ -293,4 +295,19 @@ h1 {
   vertical-align: middle; }
 
 .comments-button {
-  font-size: 0.5em; }
+  font-size: 0.5em;
+  cursor: pointer; }
+
+.comments-wrap {
+  padding: 2em; }
+
+.new-comment {
+  font-family: 'Raleway', sans-serif; }
+
+.comments-header {
+  margin-top: 2em;
+  font-family: 'Raleway', sans-serif; }
+
+.comment-instance {
+  margin: 1em 0 0 2em;
+  font-family: 'Raleway', sans-serif; }

@@ -1,3 +1,7 @@
+.new-share__container {
+  padding:2em;
+}
+
 .new-share__header {
   font-family: $primary-font;
 }
@@ -47,6 +51,7 @@
   padding: 1em;
   border-radius: 3px;
   background: $alt-bold-color;
+  margin-left: 2em;
 }
 
 .submit-share:active {
