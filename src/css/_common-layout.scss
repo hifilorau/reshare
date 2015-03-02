@@ -1,5 +1,5 @@
 .root-content {
-  padding: 2em;
+  padding: 4em 0 0 1em;
 }
 
 .toolbar {
@@ -9,9 +9,16 @@
 }
 
 .main-nav {
-  background: #6067b0;
-  color: #FFF;
+  display: flex;
+  justify-content: flex-end;
+  background: $accent-color-dark;
+  color: $bg-color;
   padding: 0 2em;
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .app-icon {
@@ -40,5 +47,5 @@
 }
 
 .main-nav-link.active {
-  background: #4d5196;
+  background: $alt-bold-color;
 }

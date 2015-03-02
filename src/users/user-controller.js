@@ -4,7 +4,7 @@ app.config(['$routeProvider', function($routeProvider) {
     controller: 'UserCtrl',
     controllerAs: 'vm',
     resolve: {
-      user: ['$route', 'usersService', function ($route, usersService) {
+      user: ['$route', 'usersService', function($route, usersService) {
         var routeParams = $route.current.params;
         return usersService.getByUserId(routeParams.userid);
       }]
