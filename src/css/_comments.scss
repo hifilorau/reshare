@@ -4,14 +4,49 @@
 
 .new-comment {
   font-family: $secondary-font;
+  color: $accent-color-dark;
+  // margin-left: 2em;
+  // background-color: $alt-bold-color;
+  //i have questions about this lil hack...
+}
+
+.class-name {
+  font-family: $secondary-font;
+  margin-left: 2em;
+}
+
+.class-name:focus, input:hover {
+  background-color: $alt-bold-color;
+  color: $bg-color;
 }
 
 .comments-header {
   margin-top: 2em;
   font-family: $secondary-font;
+  color: $accent-color-dark;
 }
 
 .comment-instance {
   margin: 1em 0 0 2em;
   font-family: $secondary-font;
+  color: $accent-color-dark;
+}
+
+.submit-comment {
+  font-family: $secondary-font;
+  padding: 1em;
+  border-radius: 3px;
+  background: $alt-bold-color;
+  margin-left: 2em;
+}
+
+.submit-comment:active {
+  font-family: $secondary-font;
+  padding: 1em;
+  border-radius: 3px;
+  background: $alt-bold-color;
+}
+
+.submit-comment:hover {
+  color: $accent-color-dark;
 }

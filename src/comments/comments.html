@@ -2,7 +2,7 @@
   <h1 class="comments-page-header">Comments Page</h1>
   <!-- <span class="comment-link">{{share.description}}</span> -->
   <form class="new-comment" ng-submit="vm.addComment(comment)">
-    <textarea ng-model="test" ng-trim="false" maxlength="500"></textarea>
+    <textarea class="class-name" ng-model="vm.comment.text" ng-trim="false" maxlength="500"></textarea>
     <div>{{500 - test.length}} left</div>
     <button class="submit-comment">Submit</button>
   </form>
