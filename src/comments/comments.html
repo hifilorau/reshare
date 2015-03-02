@@ -1,0 +1,39 @@
+<div class="comments-wrap">
+  <span>{{vm.share.url }}</span>
+  <h1 class="comments-page-header">Comments Page</h1>
+  <!-- <span class="comment-link">{{share.description}}</span> -->
+  <form class="new-comment" ng-submit="vm.addComment()">
+    <textarea class="class-name" ng-model="vm.comment.text" ng-trim="false" maxlength="500"></textarea>
+    <div>{{500 - vm.comment.text.length}} left</div>
+    <button class="submit-comment">Submit</button>
+  </form>
+
+
+
+  <!-- this is hardcoded original link and description -->
+
+<h2 class="comments-header">Comments</h2>
+  <ul>
+    <li class="comment-instance">
+      <div class="comment-text">
+        This is a comment
+      </div>
+    </li>
+    <li class="comment-instance">
+      <div class="comment-text">
+        This is another comment
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+<!-- // this is where comments will really go -->
+  <ul>
+  <li class="comment-instance" ng-repeat="comment in vm.comments | orderBy:'created'">
+    <div class="comment-text">
+      {{ comment.text }}
+    </div>
+  </li>
+ </ul>
+</div>
