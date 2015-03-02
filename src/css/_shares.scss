@@ -33,6 +33,9 @@
 .votes {
   display: inline-block;
   border: solid;
+  // position: relative;
+  // width: 100px;
+  // height: 2em;
 }
 
 .icon-up-thumb {
@@ -43,12 +46,15 @@
   // padding: -0.5em;
   display: inline-block;
   cursor: pointer;
+  // position: absolute;
+  // left: 0;
 }
 
 .count {
   display: inline-block;
   vertical-align: middle;
   // padding-left: 10px;
+  // position: absolute;
 }
 
 .icon-down-thumb {
@@ -59,6 +65,8 @@
   // padding: -0.5em;
   display: inline-block;
   cursor: pointer;
+  // position: absolute;
+  // right: 0;
 }
 
 .share-content {

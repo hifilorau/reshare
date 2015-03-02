@@ -75,9 +75,13 @@ input, textarea {
   font-size: 1em;
   border: 1px solid #DDD;
   padding: 0.25em;
-  vertical-align: middle; }
+  vertical-align: middle;
+  outline: none;
+  cursor: text;
+  font-family: 'Raleway', sans-serif; }
 
 button {
+  font-family: 'Raleway', sans-serif;
   display: inline-block;
   border: 0;
   background: #807d7f;
@@ -192,10 +196,9 @@ h1 {
   border-bottom: 1px solid #DDD;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   font-weight: none;
-  vertical-align: middle;
-  font-family: 'Raleway', sans-serif; }
+  vertical-align: middle; }
 
-.new-share__link:focus, input:hover {
+.new-share__link:focus {
   background-color: #129db3;
   color: #f4efef; }
 
@@ -203,7 +206,6 @@ h1 {
   max-height: 2em;
   resize: none;
   outline: none;
-  margin-bottom: 1em;
   min-width: 10em;
   font-size: 1.5em;
   height: 1.25em;
@@ -216,19 +218,22 @@ h1 {
   vertical-align: middle;
   font-family: 'Raleway', sans-serif; }
 
-.new-share__desc:focus, input:hover {
+.new-share__desc:focus {
   background-color: #129db3;
   color: #f4efef; }
 
-.submit-share {
+.text-count {
+  margin-left: 1em;
   font-family: 'Raleway', sans-serif;
+  color: #807d7f; }
+
+.submit-share {
   padding: 1em;
   border-radius: 3px;
   background: #129db3;
   margin-left: 2em; }
 
 .submit-share:active {
-  font-family: 'Raleway', sans-serif;
   padding: 1em;
   border-radius: 3px;
   background: #129db3; }
@@ -310,11 +315,10 @@ h1 {
   font-family: 'Raleway', sans-serif;
   color: #807d7f; }
 
-.class-name {
-  font-family: 'Raleway', sans-serif;
+.comment-text {
   margin-left: 2em; }
 
-.class-name:focus, input:hover {
+.comment-text:focus {
   background-color: #129db3;
   color: #f4efef; }
 

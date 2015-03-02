@@ -10,12 +10,12 @@
   //i have questions about this lil hack...
 }
 
-.class-name {
-  font-family: $secondary-font;
+.comment-text {
+  // font-family: $secondary-font;
   margin-left: 2em;
 }
 
-.class-name:focus, input:hover {
+.comment-text:focus {
   background-color: $alt-bold-color;
   color: $bg-color;
 }

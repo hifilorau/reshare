@@ -15,7 +15,7 @@ app.factory('Comment', function () {
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/shares/:id/comments', {
-    controller: 'CommentsCtrl',
+    controller: 'commentsCtrl',
     controllerAs: 'vm',
     templateUrl: 'comments/comments.html',
     resolve: {
@@ -25,8 +25,8 @@ app.config(['$routeProvider', function($routeProvider) {
     }
   });
 }])
-
-.controller('CommentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
+.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
+   var self = this;
 
   self.comment = Comment();
   // self.share = shareService.getShare();
@@ -250,7 +250,7 @@ app.factory('commentService', ['$http', function($http) {
 }]);
 
 app.factory('shareService', ['$http', '$log', function($http, $log) {
-
+  
   function get(url) {
     return processAjaxPromise($http.get(url));
   }
