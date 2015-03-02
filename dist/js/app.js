@@ -41,38 +41,6 @@ app.controller('MainNavCtrl',
     };
   }]);
 
-app.factory('Share', function () {
-  return function (spec) {
-    spec = spec || {};
-    return {
-
-        url: spec.url,
-        description: spec.description,
-        tags: spec.tags,
-        upvotes: spec.upvotes,
-        downvotes: spec.downvotes,
-        userId: spec.userId,
-        _id: spec._id
-
-    };
-  };
-});
-
-app.config(['$routeProvider', function($routeProvider) {
-  var routeDefinition = {
-    templateUrl: 'shares/shares.html',
-    controller: 'SharesCtrl',
-    controllerAs: 'vm'
-  };
-
-  $routeProvider.when('/', routeDefinition);
-  $routeProvider.when('/shares', routeDefinition);
-}])
-.controller('SharesCtrl', [function () {
-  // TODO: load these via AJAX
-  this.shares = [];
-}]);
-
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
     templateUrl: 'users/user.html',
@@ -141,6 +109,38 @@ app.config(['$routeProvider', function($routeProvider) {
     // Clear our newUser property
     self.newUser = User();
   };
+}]);
+
+app.factory('Share', function () {
+  return function (spec) {
+    spec = spec || {};
+    return {
+
+        url: spec.url,
+        description: spec.description,
+        tags: spec.tags,
+        upvotes: spec.upvotes,
+        downvotes: spec.downvotes,
+        userId: spec.userId,
+        _id: spec._id
+
+    };
+  };
+});
+
+app.config(['$routeProvider', function($routeProvider) {
+  var routeDefinition = {
+    templateUrl: 'shares/shares.html',
+    controller: 'SharesCtrl',
+    controllerAs: 'vm'
+  };
+
+  $routeProvider.when('/', routeDefinition);
+  $routeProvider.when('/shares', routeDefinition);
+}])
+.controller('SharesCtrl', [function () {
+  // TODO: load these via AJAX
+  this.shares = [];
 }]);
 
 // A little string utility... no biggie
