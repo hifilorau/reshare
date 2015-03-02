@@ -1,5 +1,6 @@
 .new-share__container {
   padding:2em;
+
 }
 
 .new-share__header {
@@ -26,6 +27,7 @@
 
 .new-share__link:focus, input:hover {
   background-color: $alt-bold-color;
+  color: $bg-color;
 }
 
 .new-share__desc {
@@ -44,6 +46,11 @@
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   vertical-align: middle;
   font-family: $secondary-font;
+}
+
+.new-share__desc:focus, input:hover {
+  background-color: $alt-bold-color;
+  color: $bg-color;
 }
 
 .submit-share {
