@@ -1,6 +1,52 @@
 // The root module for our Angular application
 var app = angular.module('app', ['ngRoute']);
 
+app.factory('Comment', function () {
+  return function (spec) {
+    spec = spec || {};
+    return {
+      userId: spec.userId,
+      text: spec.text,
+      subjectId: 'the id of the object being commented on (usually a resource)',
+      created: Date.now()
+    };
+  };
+});
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/shares/:id/comments', {
+    controller: 'commentsCtrl',
+    controllerAs: 'vm',
+    templateUrl: 'comments/comments.html',
+    resolve: {
+      shares: ['commentService', function (commentService) {
+        return commentService.listComments();
+      }]
+    }
+  });
+}])
+.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
+   var self = this;
+
+  self.comment = Comment();
+  // self.share = shareService.getShare();
+
+  self.goToShares = function () {
+    $location.path('/shares');
+  };
+
+  self.addComment = function (share) {
+    commentService.addComment(self.comment);
+  };
+
+  self.listComments = function () {
+    commentService.listComments(id);
+  };
+
+
+
+}]);
+
 app.controller('MainNavCtrl',
   ['$location', 'StringUtil', function($location, StringUtil) {
     var self = this;
@@ -21,7 +67,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     controllerAs: 'vm',
     templateUrl: 'shares/new-share.html'
   });
-}]).controller('NewShareCtrl', ['$location', 'Share', 'resStore', function($location, Share, resStore) {
+}]).controller('NewShareCtrl', ['$location', 'Share', 'shareService', function($location, Share, shareService) {
   var self = this;
 
   self.share = Share();
@@ -39,6 +85,11 @@ app.config(['$routeProvider', function ($routeProvider) {
     $location.path('/shares');
   };
 
+  self.addShare = function () {
+    alert("I SHOULD BE ADDING STUFF");
+    shareService.addShare(self.share).then(self.goToShares);
+  };
+
 }]);
 
 app.factory('Share', function () {
@@ -47,7 +98,7 @@ app.factory('Share', function () {
     return {
         url: spec.url,
         description: spec.description,
-        tags: spec.tags
+        tags: spec.tags || 'general'
     };
   };
 });
@@ -56,15 +107,36 @@ app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
     templateUrl: 'shares/shares.html',
     controller: 'SharesCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    resolve: {
+      shares: ['shareService', function (shareService) {
+        return shareService.getShareList();
+      }]
+    }
   };
-
   $routeProvider.when('/', routeDefinition);
   $routeProvider.when('/shares', routeDefinition);
 }])
-.controller('SharesCtrl', [function () {
-  // TODO: load these via AJAX
-  this.shares = [];
+.controller('SharesCtrl', ['$location', 'shares', 'shareService', 'Share', 'voteService', function ($location, shares, shareService, Share, voteService) {
+
+
+var self = this;
+
+self.shares = shares;
+
+  self.upvote = function (share) {
+    voteService.upvote(share);
+  };
+
+  self.downvote = function (share) {
+    voteService.downvote(share);
+  };
+
+  self.goToComments = function(share) {
+    $location.path('/shares/' + share._id + '/comments');
+  };
+
+
 }]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -146,6 +218,105 @@ app.factory('StringUtil', function() {
     }
   };
 });
+
+app.factory('commentService', ['$http', function($http) {
+  function post(url, data) {
+    return processAjaxPromise($http.post(url, data));
+  }
+
+  function get(url, data) {
+    return processAjaxPromise($http.get(url, data));
+  }
+
+  function processAjaxPromise(p) {
+    return p.then(function (result) {
+      return result.data;
+    })
+    .catch(function (error) {
+      $log.log(error);
+    });
+  }
+
+  return {
+    addComment: function (id) {
+      alert("comments");
+      return post('/api/res/' + id + '/comments', { text: 'text' });
+    },
+
+    listComments: function (id) {
+      return get('/api/res/' + id + '/comments');
+    }
+  };
+}]);
+
+app.factory('shareService', ['$http', '$log', function($http, $log) {
+  
+  function get(url) {
+    return processAjaxPromise($http.get(url));
+  }
+
+  function post(url, share) {
+    return processAjaxPromise($http.post(url, share));
+  }
+
+  function remove(url) {
+    return processAjaxPromise($http.delete(url));
+
+  }
+
+  function processAjaxPromise(p) {
+    return p.then(function (result) {
+      return result.data;
+    })
+    .catch(function (error) {
+      $log.log(error);
+    });
+  }
+
+  return {
+    getShareList: function () {
+      return get('/api/res');
+    },
+
+    getShare: function (id) {
+      return get('/api/res/' + id);
+    },
+
+    addShare: function (share) {
+      return post('/api/res', share);
+    },
+
+    deleteShare: function (id) {
+      return remove('/api/res/' + id);
+    }
+  };
+}]);
+
+app.factory('voteService', ['$http', function($http) {
+  function post(url, data) {
+    return processAjaxPromise($http.post(url, data));
+  }
+
+  function processAjaxPromise(p) {
+    return p.then(function (result) {
+      return result.data;
+    })
+    .catch(function (error) {
+      $log.log(error);
+    });
+  }
+
+  return {
+    upvote: function (id) {
+
+      return post('/api/res/' + id + '/votes', { vote: 1 });
+    },
+
+    downvote: function (id) {
+      return post('/api/res/' + id + '/votes', { vote: -1 });
+    }
+  };
+}]);
 
 app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
   // My $http promise then and catch always
