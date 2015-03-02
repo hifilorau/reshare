@@ -13,34 +13,38 @@ app.factory('Comment', function () {
   };
 });
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/:id/comments', {
     controller: 'commentsCtrl',
     controllerAs: 'vm',
     templateUrl: 'comments/comments.html',
     resolve: {
-      shares: ['commentService', function (commentService) {
-        return commentService.listComments();
+      share: ['shareService', '$route', function (shareService, $route) {
+        return shareService.getShare($route.current.params.id);
+      }],
+      comments: ['commentService', '$route', function (commentService, $route) {
+        return commentService.listComments($route.current.params.id);
       }]
     }
   });
 }])
-.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
+.controller('commentsCtrl', ['$location', 'comments', 'Comment', 'commentService', 'shareService', 'share', function ($location, comments, Comment, commentService, shareService, share) {
    var self = this;
 
+  self.comments = comments;
+  self.share = share;
   self.comment = Comment();
-  // self.share = shareService.getShare();
 
-  self.goToShares = function () {
-    $location.path('/shares');
-  };
 
-  self.addComment = function (share) {
-    commentService.addComment(self.comment);
+
+  self.addComment = function () {
+    commentService.addComment(self.share._id, self.comment).then(function(comment) {
+      self.comments.push(comment);
+    });
   };
 
   self.listComments = function () {
-    commentService.listComments(id);
+    commentService.listComments(self.share._id);
   };
 
 
@@ -145,7 +149,7 @@ app.config(['$routeProvider', function($routeProvider) {
     controller: 'UserCtrl',
     controllerAs: 'vm',
     resolve: {
-      user: ['$route', 'usersService', function ($route, usersService) {
+      user: ['$route', 'usersService', function($route, usersService) {
         var routeParams = $route.current.params;
         return usersService.getByUserId(routeParams.userid);
       }]
@@ -219,13 +223,13 @@ app.factory('StringUtil', function() {
   };
 });
 
-app.factory('commentService', ['$http', function($http) {
+app.factory('commentService', ['$http', '$log', function($http, $log) {
   function post(url, data) {
     return processAjaxPromise($http.post(url, data));
   }
 
-  function get(url, data) {
-    return processAjaxPromise($http.get(url, data));
+  function get(url) {
+    return processAjaxPromise($http.get(url));
   }
 
   function processAjaxPromise(p) {
@@ -238,9 +242,9 @@ app.factory('commentService', ['$http', function($http) {
   }
 
   return {
-    addComment: function (id) {
+    addComment: function (id, comment) {
       alert("comments");
-      return post('/api/res/' + id + '/comments', { text: 'text' });
+      return post('/api/res/' + id + '/comments', { text: comment.text });
     },
 
     listComments: function (id) {
@@ -250,7 +254,7 @@ app.factory('commentService', ['$http', function($http) {
 }]);
 
 app.factory('shareService', ['$http', '$log', function($http, $log) {
-  
+
   function get(url) {
     return processAjaxPromise($http.get(url));
   }
@@ -314,54 +318,6 @@ app.factory('voteService', ['$http', function($http) {
 
     downvote: function (id) {
       return post('/api/res/' + id + '/votes', { vote: -1 });
-    }
-  };
-}]);
-
-app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
-  // My $http promise then and catch always
-  // does the same thing, so I'll put the
-  // processing of it here. What you probably
-  // want to do instead is create a convenience object
-  // that makes $http calls for you in a standard
-  // way, handling post, put, delete, etc
-  function get(url) {
-    return processAjaxPromise($http.get(url));
-  }
-
-  function post(url, share) {
-    return processAjaxPromise($http.post(url, share));
-  }
-
-  function remove(url, id) {
-    return processAjaxPromise($http.delete(url, id))
-
-  }
-
-  function processAjaxPromise(p) {
-    return p.then(function (result) {
-      return result.data;
-    })
-    .catch(function (error) {
-      $log.log(error);
-    });
-  }
-
-  return {
-    list: function () {
-      return get('/api/res');
-    },
-
-    getShare: function (id) {
-      return get('/api/res/' + id)
-    },
-
-    addShare: function (share) {
-      return post('/api/res', share);
-    },
-
-    deleteShare: function (id) {
-      return remove('/api/res/' + id);
     }
   };
 }]);

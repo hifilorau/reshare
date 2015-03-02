@@ -1,5 +1,5 @@
 app.factory('shareService', ['$http', '$log', function($http, $log) {
-  
+
   function get(url) {
     return processAjaxPromise($http.get(url));
   }

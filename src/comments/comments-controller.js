@@ -1,31 +1,35 @@
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/:id/comments', {
     controller: 'commentsCtrl',
     controllerAs: 'vm',
     templateUrl: 'comments/comments.html',
     resolve: {
-      shares: ['commentService', function (commentService) {
-        return commentService.listComments();
+      share: ['shareService', '$route', function (shareService, $route) {
+        return shareService.getShare($route.current.params.id);
+      }],
+      comments: ['commentService', '$route', function (commentService, $route) {
+        return commentService.listComments($route.current.params.id);
       }]
     }
   });
 }])
-.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
+.controller('commentsCtrl', ['$location', 'comments', 'Comment', 'commentService', 'shareService', 'share', function ($location, comments, Comment, commentService, shareService, share) {
    var self = this;
 
+  self.comments = comments;
+  self.share = share;
   self.comment = Comment();
-  // self.share = shareService.getShare();
 
-  self.goToShares = function () {
-    $location.path('/shares');
-  };
 
-  self.addComment = function (share) {
-    commentService.addComment(self.comment);
+
+  self.addComment = function () {
+    commentService.addComment(self.share._id, self.comment).then(function(comment) {
+      self.comments.push(comment);
+    });
   };
 
   self.listComments = function () {
-    commentService.listComments(id);
+    commentService.listComments(self.share._id);
   };
 
 

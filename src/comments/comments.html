@@ -1,9 +1,10 @@
 <div class="comments-wrap">
+  <span>{{vm.share.url }}</span>
   <h1 class="comments-page-header">Comments Page</h1>
   <!-- <span class="comment-link">{{share.description}}</span> -->
-  <form class="new-comment" ng-submit="vm.addComment(comment)">
+  <form class="new-comment" ng-submit="vm.addComment()">
     <textarea class="class-name" ng-model="vm.comment.text" ng-trim="false" maxlength="500"></textarea>
-    <div>{{500 - test.length}} left</div>
+    <div>{{500 - vm.comment.text.length}} left</div>
     <button class="submit-comment">Submit</button>
   </form>
 
@@ -28,9 +29,11 @@
 
 
 <!-- // this is where comments will really go -->
-  <li class="comment-instance" ng-repeat="comment in vm.comments">
+  <ul>
+  <li class="comment-instance" ng-repeat="comment in vm.comments | orderBy:'created'">
     <div class="comment-text">
-      {{ comments.text }}
+      {{ comment.text }}
     </div>
   </li>
+ </ul>
 </div>
