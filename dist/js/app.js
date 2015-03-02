@@ -1,6 +1,66 @@
 // The root module for our Angular application
 var app = angular.module('app', ['ngRoute']);
 
+app.factory('Comment', function () {
+  return function (spec) {
+    spec = spec || {};
+    return {
+      userId: spec.userId,
+      text: spec.text,
+      subjectId: 'the id of the object being commented on (usually a resource)',
+      created: Date.now()
+    };
+  };
+});
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/shares/:id/comments', {
+    controller: 'CommentsCtrl',
+    controllerAs: 'vm',
+    templateUrl: 'comments/comments.html',
+    resolve: {
+      shares: ['commentService', function (commentService) {
+        return commentService.listComments();
+      }]
+    }
+  });
+}])
+.controller('CommentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
+   var self = this;
+
+  self.comment = Comment();
+  // self.share = shareService.getShare();
+
+  self.goToShares = function () {
+    $location.path('/shares');
+  };
+
+  self.addComment = function (share) {
+    commentService.addComment(self.comment);
+  };
+
+  self.listComments = function () {
+    commentService.listComments(id);
+  };
+
+
+
+}]);
+
+app.controller('MainNavCtrl',
+  ['$location', 'StringUtil', function($location, StringUtil) {
+    var self = this;
+
+    self.isActive = function (path) {
+      // The default route is a special case.
+      if (path === '/') {
+        return $location.path() === '/';
+      }
+
+      return StringUtil.startsWith($location.path(), path);
+    };
+  }]);
+
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/new', {
     controller: 'NewShareCtrl',
@@ -79,76 +139,6 @@ self.shares = shares;
 
 }]);
 
-app.factory('Comment', function () {
-  return function (spec) {
-    spec = spec || {};
-    return {
-      userId: spec.userId,
-      text: spec.text,
-      subjectId: 'the id of the object being commented on (usually a resource)',
-      created: Date.now()
-    };
-  };
-});
-
-app.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/shares/:id/comments', {
-    controller: 'commentsCtrl',
-    controllerAs: 'vm',
-    templateUrl: 'comments/comments.html',
-    resolve: {
-      shares: ['commentService', function (commentService) {
-        return commentService.listComments();
-      }]
-    }
-  });
-}])
-.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
-   var self = this;
-
-  self.comment = Comment();
-  // self.share = shareService.getShare();
-
-  self.goToShares = function () {
-    $location.path('/shares');
-  };
-
-  self.addComment = function (share) {
-    commentService.addComment(self.comment);
-  };
-
-  self.listComments = function () {
-    commentService.listComments(id);
-  };
-
-
-
-}]);
-
-app.controller('MainNavCtrl',
-  ['$location', 'StringUtil', function($location, StringUtil) {
-    var self = this;
-
-    self.isActive = function (path) {
-      // The default route is a special case.
-      if (path === '/') {
-        return $location.path() === '/';
-      }
-
-      return StringUtil.startsWith($location.path(), path);
-    };
-  }]);
-
-// A little string utility... no biggie
-app.factory('StringUtil', function() {
-  return {
-    startsWith: function (str, subStr) {
-      str = str || '';
-      return str.slice(0, subStr.length) === subStr;
-    }
-  };
-});
-
 app.config(['$routeProvider', function($routeProvider) {
   var routeDefinition = {
     templateUrl: 'users/user.html',
@@ -218,6 +208,16 @@ app.config(['$routeProvider', function($routeProvider) {
     self.newUser = User();
   };
 }]);
+
+// A little string utility... no biggie
+app.factory('StringUtil', function() {
+  return {
+    startsWith: function (str, subStr) {
+      str = str || '';
+      return str.slice(0, subStr.length) === subStr;
+    }
+  };
+});
 
 app.factory('commentService', ['$http', function($http) {
   function post(url, data) {

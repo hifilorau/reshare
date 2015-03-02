@@ -1,6 +1,6 @@
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/shares/:id/comments', {
-    controller: 'commentsCtrl',
+    controller: 'CommentsCtrl',
     controllerAs: 'vm',
     templateUrl: 'comments/comments.html',
     resolve: {
@@ -10,7 +10,7 @@ app.config(['$routeProvider', function($routeProvider) {
     }
   });
 }])
-.controller('commentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
+.controller('CommentsCtrl', ['$location' , 'Comment', 'commentService', 'shareService', 'Share', function ($location ,Comment, commentService, shareService, Share) {
    var self = this;
 
   self.comment = Comment();
