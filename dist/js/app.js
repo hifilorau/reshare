@@ -243,7 +243,6 @@ app.factory('commentService', ['$http', '$log', function($http, $log) {
 
   return {
     addComment: function (id, comment) {
-      alert("comments");
       return post('/api/res/' + id + '/comments', { text: comment.text });
     },
 

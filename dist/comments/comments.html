@@ -12,8 +12,8 @@
 
   <!-- this is hardcoded original link and description -->
 
-<h2 class="comments-header">Comments</h2>
-  <ul>
+
+  <!-- <ul>
     <li class="comment-instance">
       <div class="comment-text">
         This is a comment
@@ -25,10 +25,11 @@
       </div>
     </li>
   </ul>
-</div>
+</div> -->
 
 
 <!-- // this is where comments will really go -->
+<h2 class="comments-header">Comments</h2>
   <ul>
   <li class="comment-instance" ng-repeat="comment in vm.comments | orderBy:'created'">
     <div class="comment-text">
