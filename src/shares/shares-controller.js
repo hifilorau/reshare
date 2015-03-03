@@ -24,9 +24,9 @@ app.config(['$routeProvider', function($routeProvider) {
 var self = this;
 
   self.shares = shares;
-  self.votes = function (upvote, downvote) {
-    return votes = upvotes - downvotes;
-  };
+  // self.votes = function (upvote, downvote) {
+  //   return votes = upvotes - downvotes;
+  // };
 
   self.upvote = function (share) {
     voteService.upvote(share);
