@@ -40,6 +40,7 @@ app.config(['$routeProvider', function ($routeProvider) {
   self.addComment = function () {
     commentService.addComment(self.share._id, self.comment).then(function(comment) {
       self.comments.push(comment);
+      self.comment.text = '';
     });
   };
 
@@ -90,7 +91,6 @@ app.config(['$routeProvider', function ($routeProvider) {
   };
 
   self.addShare = function () {
-    alert("I SHOULD BE ADDING STUFF");
     shareService.addShare(self.share).then(self.goToShares);
   };
 
@@ -116,8 +116,14 @@ app.config(['$routeProvider', function($routeProvider) {
       shares: ['shareService', function (shareService) {
         return shareService.getShareList();
       }]
-    }
-  };
+    //   upvotes: ['voteService', function (voteService) {
+    //     return VoteService.upvote();
+    //   }],
+    //   downvotes: ['voteService', function (voteService) {
+    //     return VoteService.downvote();
+    // }
+  }
+};
   $routeProvider.when('/', routeDefinition);
   $routeProvider.when('/shares', routeDefinition);
 }])
@@ -126,7 +132,10 @@ app.config(['$routeProvider', function($routeProvider) {
 
 var self = this;
 
-self.shares = shares;
+  self.shares = shares;
+  self.votes = function (upvote, downvote) {
+    return votes = upvotes - downvotes;
+  };
 
   self.upvote = function (share) {
     voteService.upvote(share);

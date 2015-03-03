@@ -23,7 +23,6 @@ app.config(['$routeProvider', function ($routeProvider) {
   };
 
   self.addShare = function () {
-    alert("I SHOULD BE ADDING STUFF");
     shareService.addShare(self.share).then(self.goToShares);
   };
 
