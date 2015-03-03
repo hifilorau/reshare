@@ -314,7 +314,7 @@ h1 {
   font-family: 'Raleway', sans-serif;
   margin-left: 2em; }
 
-.class-name:focus, input:hover {
+.class-name:focus {
   background-color: #129db3;
   color: #f4efef; }
 
