@@ -3,7 +3,7 @@
     <div class="new-share__container">
       <h1 class="new-share__header">Share Something</h1>
       <input class="new-share__link" type="text" ng-model="vm.share.url" placeholder="Paste the link here">
-      <textarea class ="new-share__desc" maxlength="50" ng-model="vm.share.description" ng-trim="false" placeholder="Tell us about it!"></textarea>
+      <textarea class ="new-share__desc" maxlength="100" minlength="5" ng-model="vm.share.description" ng-trim="false" placeholder="Tell us about it!"></textarea>
       <div>{{50 - vm.share.description.length}} left</div>
     </div>
     <button class="submit-share">Submit</button>
