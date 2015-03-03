@@ -25,7 +25,7 @@
 
 }
 
-.new-share__link:focus, input:hover {
+.new-share__link:focus  {
   background-color: $alt-bold-color;
   color: $bg-color;
 }
@@ -48,7 +48,7 @@
   font-family: $secondary-font;
 }
 
-.new-share__desc:focus, input:hover {
+.new-share__desc:focus {
   background-color: $alt-bold-color;
   color: $bg-color;
 }
