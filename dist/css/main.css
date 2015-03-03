@@ -298,7 +298,7 @@ h1 {
   vertical-align: middle; }
 
 .comments-button {
-  font-size: 0.5em;
+  font-size: 0.75em;
   cursor: pointer; }
 
 .comments-wrap {
@@ -341,3 +341,4 @@ h1 {
 
 .submit-comment:hover {
   color: #807d7f; }
+
