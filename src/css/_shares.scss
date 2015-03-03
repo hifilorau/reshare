@@ -31,8 +31,12 @@
 }
 
 .votes {
+  margin-top: -20px;
   display: inline-block;
-  border: solid;
+  // border: solid;
+  position: relative;
+  width: 4em;
+  vertical-align: middle;
 }
 
 .icon-up-thumb {
@@ -43,15 +47,22 @@
   // padding: -0.5em;
   display: inline-block;
   cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 50%;
 }
 
 .count {
+  position: absolute;
   display: inline-block;
-  vertical-align: middle;
+  top: 11px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   // padding-left: 10px;
 }
 
 .icon-down-thumb {
+  position: absolute;
   font-family: "reshare-icons";
   background: transparent;
   color: $accent-color-dark;
@@ -59,19 +70,20 @@
   // padding: -0.5em;
   display: inline-block;
   cursor: pointer;
+  right: 0;
+  top: 50%;
 }
 
 .share-content {
   display: inline-block;
   // border: solid;
-  margin-left: 2em;
+  margin-left: 1em;
   // width: 50%;
   min-width: 15em;
 }
 
 .share-display {
   display: inline-block;
-  vertical-align: middle;
   // width: 60%;
   // border: dotted;
   margin-right: 1em;
@@ -80,12 +92,27 @@
 .comment {
   display: inline-block;
   text-align: right;
-  vertical-align: middle;
   // border: dotted;
   // width: 25%;
 }
 
 .comments-button {
+<<<<<<< HEAD
   font-size: 0.75em;
+=======
+  display: inline-block;
+  margin-top: -25px;
+  font-size: 0.75em;
+  border-radius: .2em;
+>>>>>>> 6839075f6b5d29f3cc10170bf9326ae4478a7db4
   cursor: pointer;
+  background: none;
+  border: 1px solid $accent-color-dark;
+  color: $accent-color-dark;
+}
+
+.comments-button:hover {
+  background-color: $alt-bold-color;
+  color: white;
+  border-color: white;
 }
