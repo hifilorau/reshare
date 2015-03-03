@@ -182,7 +182,6 @@ h1 {
 .new-share__link {
   outline: none;
   margin-bottom: 1em;
-  min-width: 20em;
   font-size: 1.5em;
   height: 1.25em;
   width: 100%;
@@ -204,7 +203,6 @@ h1 {
   resize: none;
   outline: none;
   margin-bottom: 1em;
-  min-width: 10em;
   font-size: 1.5em;
   height: 1.25em;
   width: 100%;

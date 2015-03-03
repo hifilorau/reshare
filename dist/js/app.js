@@ -66,6 +66,19 @@ app.controller('MainNavCtrl',
     };
   }]);
 
+//making a filter
+//$filter('filter') (array, expression, comparator)
+app.filter('ellipsis', function(){
+  return function (textarea, num) {
+    if(textarea.length > num ) {
+      var newTextArea = textarea.slice(0, num) + '...';
+      return newTextArea;
+    } else {
+      return textarea;
+    }
+};
+});
+
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/shares/new', {
     controller: 'NewShareCtrl',
@@ -133,9 +146,9 @@ app.config(['$routeProvider', function($routeProvider) {
 var self = this;
 
   self.shares = shares;
-  self.votes = function (upvote, downvote) {
-    return votes = upvotes - downvotes;
-  };
+  // self.votes = function (upvote, downvote) {
+  //   return votes = upvotes - downvotes;
+  // };
 
   self.upvote = function (share) {
     voteService.upvote(share);

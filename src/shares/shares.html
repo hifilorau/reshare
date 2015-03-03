@@ -18,7 +18,7 @@
 
     <div class="share-content">
       <div class="share-display">
-        <a href="{{share.url}}">{{share.description}}</a>
+        <a href="{{share.url}}">{{share.description | ellipsis: 50}}</a>
       </div>
       <!-- <button class="comment-button" ng-click="vm.goToComment()">Comment</button> -->
       <div class="comment">
