@@ -195,7 +195,7 @@ h1 {
   vertical-align: middle;
   font-family: 'Raleway', sans-serif; }
 
-.new-share__link:focus, input:hover {
+.new-share__link:focus {
   background-color: #129db3;
   color: #f4efef; }
 
@@ -216,7 +216,7 @@ h1 {
   vertical-align: middle;
   font-family: 'Raleway', sans-serif; }
 
-.new-share__desc:focus, input:hover {
+.new-share__desc:focus {
   background-color: #129db3;
   color: #f4efef; }
 
@@ -314,7 +314,7 @@ h1 {
   font-family: 'Raleway', sans-serif;
   margin-left: 2em; }
 
-.class-name:focus, input:hover {
+.class-name:focus {
   background-color: #129db3;
   color: #f4efef; }
 
