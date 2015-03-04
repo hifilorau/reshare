@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 575px) {
 
   body {
   text-align: center;
@@ -10,10 +10,14 @@
 
   .votes {
     position: relative;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .share-content {
     padding: 1em 0 1em 0;
+    display: block;
   }
 
   .share-display {
@@ -39,7 +43,7 @@
   }
 
   .comments-button:hover {
-    background:   $accent-color-dark;
+    background:$accent-color-dark;
     color: white;
     border: none;
   }

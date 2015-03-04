@@ -46,11 +46,20 @@
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   vertical-align: middle;
   font-family: $secondary-font;
+  position: relative;
 }
 
 .new-share__desc:focus {
   background-color: $alt-bold-color;
   color: $bg-color;
+}
+
+.new-share-text-count {
+  font-family: $secondary-font;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: $alt-accent-color;
 }
 
 .submit-share {
