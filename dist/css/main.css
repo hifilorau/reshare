@@ -252,11 +252,13 @@ h1 {
   font-size: 3em; }
 
 .shares-list {
-  padding: 1em 0 1em 3em;
+  padding: 1em 0 1em 2em;
   position: relative;
   top: 8em;
   font-family: 'Raleway', sans-serif;
-  min-width: 30em; }
+  margin: 1em;
+  background: #F4F4F4;
+  border-color: #807d7f; }
 
 .votes {
   margin-top: -20px;
@@ -309,24 +311,20 @@ h1 {
   text-align: right; }
 
 .comments-button {
-<<<<<<< HEAD
   font-size: 0.75em;
-  cursor: pointer; }
-=======
   display: inline-block;
   margin-top: -25px;
   font-size: 0.75em;
   border-radius: .2em;
   cursor: pointer;
-  background: none;
-  border: 1px solid #807d7f;
-  color: #807d7f; }
+  background: #aab3bf;
+  border: none;
+  color: white; }
 
 .comments-button:hover {
-  background-color: #129db3;
+  background: #129db3;
   color: white;
-  border-color: white; }
->>>>>>> 6839075f6b5d29f3cc10170bf9326ae4478a7db4
+  border: none; }
 
 .comments-wrap {
   padding: 2em; }
@@ -369,3 +367,18 @@ h1 {
 .submit-comment:hover {
   color: #807d7f; }
 
+@media (max-width: 600px) {
+  body {
+    text-align: center; }
+  .share-content {
+    margin: 1em; }
+  .share-display {
+    display: block;
+    margin: 1em;
+    font-size: 1.75em; }
+  .comments-button {
+    display: block; }
+  .comments-button:hover {
+    background: #807d7f;
+    color: white;
+    border: none; } }

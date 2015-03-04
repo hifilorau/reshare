@@ -21,13 +21,16 @@
 
 .shares-list {
   // margin-bottom: 2em;
-  padding: 1em 0 1em 3em;
+  padding: 1em 0 1em 2em;
   // border-bottom: dotted;
   position: relative;
   top: 8em;
   font-family: $secondary-font;
   // width: 100%;
-  min-width: 30em;
+  // min-width: 30em;
+  margin: 1em;
+  background: $alt-bg-color;
+  border-color: $accent-color-dark;
 }
 
 .votes {
@@ -97,22 +100,19 @@
 }
 
 .comments-button {
-<<<<<<< HEAD
   font-size: 0.75em;
-=======
   display: inline-block;
   margin-top: -25px;
   font-size: 0.75em;
   border-radius: .2em;
->>>>>>> 6839075f6b5d29f3cc10170bf9326ae4478a7db4
   cursor: pointer;
-  background: none;
-  border: 1px solid $accent-color-dark;
-  color: $accent-color-dark;
+    background: $alt-accent-color;
+    border: none;
+    color: white;
 }
 
 .comments-button:hover {
-  background-color: $alt-bold-color;
+  background: $alt-bold-color;
   color: white;
-  border-color: white;
+  border: none;
 }

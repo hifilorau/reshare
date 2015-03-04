@@ -1,5 +1,39 @@
 @media (max-width: 600px) {
 
+  body {
+  text-align: center;
+  }
 
+  .share-content {
+    margin:1em;
+  }
+
+  .share-display {
+    display: block;
+    margin: 1em;
+    font-size: 1.75em;
+  }
+
+  .comments-button {
+    display: block;
+  }
+  //
+  // .comments-button {
+  //   font-size: 0.75em;
+  //   display: inline-block;
+  //   margin-top: -25px;
+  //   font-size: 0.75em;
+  //   border-radius: .2em;
+  //   cursor: pointer;
+  //   background: $alt-accent-color;
+  //   border: none;
+  //   color: white;
+  // }
+
+  .comments-button:hover {
+    background:   $accent-color-dark;
+    color: white;
+    border: none;
+  }
 
 }
