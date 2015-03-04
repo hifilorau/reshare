@@ -146,9 +146,9 @@ button {
   -webkit-padding-start: 2px;
   -webkit-user-select: none;
   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-  background-position: 86% center;
+  background-position: 93% center;
   background-repeat: no-repeat;
-  border: 1px solid #AAA;
+  border: 1px solid #BBB;
   color: #555;
   overflow: hidden;
   padding: .25em .4em;
@@ -156,7 +156,8 @@ button {
   white-space: nowrap;
   width: 6em;
   display: inline-block;
-  height: 3em; }
+  height: 3em;
+  margin-left: 1em; }
 
 .user-input {
   display: inline-block;
@@ -172,6 +173,31 @@ button {
 
 h1 {
   color: #807d7f; }
+
+.add-user-button {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  border-radius: 3px;
+  background: #129db3;
+  margin-left: 1em; }
+
+.add-user-button:active {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  border-radius: 3px;
+  background: #129db3; }
+
+.add-user-button:hover {
+  color: #807d7f; }
+
+.user-list {
+  padding: 1em 0 1em 3em;
+  border-bottom-color: #807d7f;
+  border-bottom-style: solid;
+  position: relative;
+  top: 2em;
+  font-family: 'Raleway', sans-serif;
+  width: 100%; }
 
 .new-share__container {
   padding: 2em; }
