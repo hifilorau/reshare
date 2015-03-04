@@ -290,7 +290,8 @@ h1 {
   display: inline-block;
   position: relative;
   width: 4em;
-  vertical-align: middle; }
+  vertical-align: middle;
+  margin-left: 1em; }
 
 .icon-up-thumb {
   font-family: "reshare-icons";
