@@ -285,8 +285,11 @@ h1 {
   min-width: 30em; }
 
 .votes {
+  margin-top: -20px;
   display: inline-block;
-  border: solid; }
+  position: relative;
+  width: 4em;
+  vertical-align: middle; }
 
 .icon-up-thumb {
   font-family: "reshare-icons";
@@ -294,38 +297,57 @@ h1 {
   color: #807d7f;
   font-size: 1em;
   display: inline-block;
-  cursor: pointer; }
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 50%; }
 
 .count {
+  position: absolute;
   display: inline-block;
-  vertical-align: middle; }
+  top: 11px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
 
 .icon-down-thumb {
+  position: absolute;
   font-family: "reshare-icons";
   background: transparent;
   color: #807d7f;
   font-size: 1em;
   display: inline-block;
-  cursor: pointer; }
+  cursor: pointer;
+  right: 0;
+  top: 50%; }
 
 .share-content {
   display: inline-block;
-  margin-left: 2em;
+  margin-left: 1em;
   min-width: 15em; }
 
 .share-display {
   display: inline-block;
-  vertical-align: middle;
   margin-right: 1em; }
 
 .comment {
   display: inline-block;
-  text-align: right;
-  vertical-align: middle; }
+  text-align: right; }
 
 .comments-button {
-  font-size: 0.5em;
-  cursor: pointer; }
+  display: inline-block;
+  margin-top: -25px;
+  font-size: 0.75em;
+  border-radius: .2em;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #807d7f;
+  color: #807d7f; }
+
+.comments-button:hover {
+  background-color: #129db3;
+  color: white;
+  border-color: white; }
 
 .comments-wrap {
   padding: 2em; }
@@ -336,7 +358,20 @@ h1 {
 
 .class-name {
   font-family: 'Raleway', sans-serif;
-  margin-left: 2em; }
+  margin-left: 2em;
+  height: auto;
+  max-width: 600px;
+  color: #999;
+  font-weight: 400;
+  font-size: 22px;
+  min-width: 300px;
+  background: #fff;
+  border-radius: 3px;
+  line-height: 1.5em;
+  border: none;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  transition: height 2s ease; }
 
 .class-name:focus {
   background-color: #129db3;
@@ -367,3 +402,9 @@ h1 {
 
 .submit-comment:hover {
   color: #807d7f; }
+
+.date-text {
+  padding-left: 1em;
+  color: black;
+  font-size: .8em;
+  font-weight: 700; }
