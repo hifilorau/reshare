@@ -6,17 +6,18 @@
    -webkit-padding-start: 2px;
    -webkit-user-select: none;
    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-   background-position: 86% center;
+   background-position: 73% center;
    background-repeat: no-repeat;
-   border: 1px solid #AAA;
+   border: 1px solid #BBB;
    color: #555;
    overflow: hidden;
    padding: .25em .4em;
    text-overflow: ellipsis;
    white-space: nowrap;
-   width: 6em;
+   width: 9em;
    display: inline-block;
-   height: 3em;
+   height: 3.7em;
+   margin-left: 1em;
 
 }
 
@@ -38,4 +39,35 @@
 
 h1 {
   color: $accent-color-dark;
+}
+
+.add-user-button {
+  font-family: $secondary-font;
+  padding: 0.65em;
+  border-radius: 3px;
+  background: $alt-bold-color;
+  margin-left: 1em;
+}
+
+.add-user-button:active {
+  font-family: $secondary-font;
+  padding: 1em;
+  border-radius: 3px;
+  background: $alt-bold-color;
+}
+
+.add-user-button:hover {
+  color: $accent-color-dark;
+}
+
+.user-list {
+  // margin-bottom: 2em;
+  padding: 1em 0 1em 3em;
+  border-bottom-color: $accent-color-dark;
+  border-bottom-style: solid;
+  position: relative;
+  top: 2em;
+  font-family: $secondary-font;
+  width: 100%;
+
 }

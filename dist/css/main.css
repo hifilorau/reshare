@@ -146,17 +146,18 @@ button {
   -webkit-padding-start: 2px;
   -webkit-user-select: none;
   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-  background-position: 86% center;
+  background-position: 73% center;
   background-repeat: no-repeat;
-  border: 1px solid #AAA;
+  border: 1px solid #BBB;
   color: #555;
   overflow: hidden;
   padding: .25em .4em;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 6em;
+  width: 9em;
   display: inline-block;
-  height: 3em; }
+  height: 3.7em;
+  margin-left: 1em; }
 
 .user-input {
   display: inline-block;
@@ -172,6 +173,31 @@ button {
 
 h1 {
   color: #807d7f; }
+
+.add-user-button {
+  font-family: 'Raleway', sans-serif;
+  padding: 0.65em;
+  border-radius: 3px;
+  background: #129db3;
+  margin-left: 1em; }
+
+.add-user-button:active {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  border-radius: 3px;
+  background: #129db3; }
+
+.add-user-button:hover {
+  color: #807d7f; }
+
+.user-list {
+  padding: 1em 0 1em 3em;
+  border-bottom-color: #807d7f;
+  border-bottom-style: solid;
+  position: relative;
+  top: 2em;
+  font-family: 'Raleway', sans-serif;
+  width: 100%; }
 
 .new-share__container {
   padding: 2em; }
@@ -257,8 +283,7 @@ h1 {
   top: 8em;
   font-family: 'Raleway', sans-serif;
   margin: 1em;
-  background: #F4F4F4;
-  border-color: #807d7f; }
+  background: #F4F4F4; }
 
 .votes {
   margin-top: -20px;
@@ -317,14 +342,14 @@ h1 {
   font-size: 0.75em;
   border-radius: .2em;
   cursor: pointer;
-  background: #aab3bf;
-  border: none;
-  color: white; }
+  background: none;
+  border: 1px solid #807d7f;
+  color: #807d7f; }
 
 .comments-button:hover {
-  background: #129db3;
+  background: #aab3bf;
   color: white;
-  border: none; }
+  border-color: white; }
 
 .comments-wrap {
   padding: 2em; }
@@ -335,7 +360,20 @@ h1 {
 
 .class-name {
   font-family: 'Raleway', sans-serif;
-  margin-left: 2em; }
+  margin-left: 2em;
+  height: auto;
+  max-width: 600px;
+  color: #999;
+  font-weight: 400;
+  font-size: 22px;
+  min-width: 300px;
+  background: #fff;
+  border-radius: 3px;
+  line-height: 1.5em;
+  border: none;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  transition: height 2s ease; }
 
 .class-name:focus {
   background-color: #129db3;
@@ -367,6 +405,12 @@ h1 {
 .submit-comment:hover {
   color: #807d7f; }
 
+.date-text {
+  padding-left: 1em;
+  color: black;
+  font-size: .8em;
+  font-weight: 700; }
+
 @media (max-width: 600px) {
   body {
     text-align: center; }
@@ -378,6 +422,16 @@ h1 {
     font-size: 1.75em; }
   .comments-button {
     display: block; }
+  .comments-button {
+    font-size: 0.75em;
+    display: inline-block;
+    margin-top: -25px;
+    font-size: 0.75em;
+    border-radius: .2em;
+    cursor: pointer;
+    background: #aab3bf;
+    border: none;
+    color: white; }
   .comments-button:hover {
     background: #807d7f;
     color: white;

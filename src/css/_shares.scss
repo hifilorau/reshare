@@ -30,7 +30,7 @@
   // min-width: 30em;
   margin: 1em;
   background: $alt-bg-color;
-  border-color: $accent-color-dark;
+
 }
 
 .votes {
@@ -106,13 +106,13 @@
   font-size: 0.75em;
   border-radius: .2em;
   cursor: pointer;
-    background: $alt-accent-color;
-    border: none;
-    color: white;
+  background: none;
+  border: 1px solid $accent-color-dark;
+  color: $accent-color-dark;
 }
 
 .comments-button:hover {
-  background: $alt-bold-color;
+  background: $alt-accent-color;
   color: white;
-  border: none;
+  border-color: white;
 }

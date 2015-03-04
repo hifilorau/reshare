@@ -14,7 +14,7 @@
 </form>
 
 <ul>
-  <li ng-repeat="user in vm.users | orderBy:'userId'">
+  <li class="user-list" ng-repeat="user in vm.users | orderBy:'userId'">
     <a class="users-name" href="#/users/{{user.userId}}">{{user.userId}}</a>
   </li>
 </ul>
