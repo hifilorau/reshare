@@ -278,7 +278,7 @@ h1 {
   font-size: 3em; }
 
 .shares-list {
-  padding: 1em 0 1em 2em;
+  padding: 1em 0 1em 0;
   position: relative;
   top: 8em;
   font-family: 'Raleway', sans-serif;
@@ -324,7 +324,6 @@ h1 {
 
 .share-content {
   display: inline-block;
-  margin-left: 1em;
   min-width: 15em; }
 
 .share-display {
@@ -414,8 +413,12 @@ h1 {
 @media (max-width: 600px) {
   body {
     text-align: center; }
+  .share-list {
+    overflow: auto; }
+  .votes {
+    position: relative; }
   .share-content {
-    margin: 1em; }
+    padding: 1em 0 1em 0; }
   .share-display {
     display: block;
     margin: 1em;

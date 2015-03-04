@@ -4,8 +4,16 @@
   text-align: center;
   }
 
+  .share-list {
+    overflow: auto;
+  }
+
+  .votes {
+    position: relative;
+  }
+
   .share-content {
-    margin:1em;
+    padding: 1em 0 1em 0;
   }
 
   .share-display {
