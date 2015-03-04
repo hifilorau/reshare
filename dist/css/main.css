@@ -146,7 +146,7 @@ button {
   -webkit-padding-start: 2px;
   -webkit-user-select: none;
   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-  background-position: 93% center;
+  background-position: 73% center;
   background-repeat: no-repeat;
   border: 1px solid #BBB;
   color: #555;
@@ -154,9 +154,9 @@ button {
   padding: .25em .4em;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 6em;
+  width: 9em;
   display: inline-block;
-  height: 3em;
+  height: 3.7em;
   margin-left: 1em; }
 
 .user-input {
@@ -176,7 +176,7 @@ h1 {
 
 .add-user-button {
   font-family: 'Raleway', sans-serif;
-  padding: 1em;
+  padding: 0.65em;
   border-radius: 3px;
   background: #129db3;
   margin-left: 1em; }

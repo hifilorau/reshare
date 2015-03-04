@@ -52,6 +52,20 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
+app.controller('MainNavCtrl',
+  ['$location', 'StringUtil', function($location, StringUtil) {
+    var self = this;
+
+    self.isActive = function (path) {
+      // The default route is a special case.
+      if (path === '/') {
+        return $location.path() === '/';
+      }
+
+      return StringUtil.startsWith($location.path(), path);
+    };
+  }]);
+
 //making a filter
 //$filter('filter') (array, expression, comparator)
 app.filter('ellipsis', function(){
@@ -230,20 +244,6 @@ app.factory('StringUtil', function() {
     }
   };
 });
-
-app.controller('MainNavCtrl',
-  ['$location', 'StringUtil', function($location, StringUtil) {
-    var self = this;
-
-    self.isActive = function (path) {
-      // The default route is a special case.
-      if (path === '/') {
-        return $location.path() === '/';
-      }
-
-      return StringUtil.startsWith($location.path(), path);
-    };
-  }]);
 
 app.factory('commentService', ['$http', '$log', function($http, $log) {
   function post(url, data) {
