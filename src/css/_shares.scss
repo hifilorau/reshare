@@ -21,13 +21,16 @@
 
 .shares-list {
   // margin-bottom: 2em;
-  padding: 1em 0 1em 3em;
+  padding: 1em 0 1em 2em;
   // border-bottom: dotted;
   position: relative;
   top: 8em;
   font-family: $secondary-font;
   // width: 100%;
-  min-width: 30em;
+  // min-width: 30em;
+  margin: 1em;
+  background: $alt-bg-color;
+
 }
 
 .votes {
@@ -97,6 +100,7 @@
 }
 
 .comments-button {
+  font-size: 0.75em;
   display: inline-block;
   margin-top: -25px;
   font-size: 0.75em;
@@ -108,7 +112,7 @@
 }
 
 .comments-button:hover {
-  background-color: $alt-bold-color;
+  background: $alt-accent-color;
   color: white;
   border-color: white;
 }
