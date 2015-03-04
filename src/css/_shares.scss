@@ -21,7 +21,7 @@
 
 .shares-list {
   // margin-bottom: 2em;
-  padding: 1em 0 1em 2em;
+  padding: 1em 0 1em 0;
   // border-bottom: dotted;
   position: relative;
   top: 8em;
@@ -30,7 +30,6 @@
   // min-width: 30em;
   margin: 1em;
   background: $alt-bg-color;
-
 }
 
 .votes {
@@ -40,6 +39,7 @@
   position: relative;
   width: 4em;
   vertical-align: middle;
+  margin-left: 1em;
 }
 
 .icon-up-thumb {
@@ -80,7 +80,7 @@
 .share-content {
   display: inline-block;
   // border: solid;
-  margin-left: 1em;
+  // margin-left: 1em;
   // width: 50%;
   min-width: 15em;
 }
