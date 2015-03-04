@@ -1,5 +1,7 @@
+
+
 <div class="comments-wrap">
-  <span>{{vm.share.url }}</span>
+  <span><a href="{{vm.share.url }}">{{vm.share.description}}</a></span>
   <h1 class="comments-page-header">Comments Page</h1>
   <!-- <span class="comment-link">{{share.description}}</span> -->
   <form class="new-comment" ng-submit="vm.addComment()">
@@ -33,7 +35,7 @@
   <ul>
   <li class="comment-instance" ng-repeat="comment in vm.comments | orderBy:'created'">
     <div class="comment-text">
-      {{ comment.text }}
+      {{ comment.text }}<span class="date-text">{{comment.created | date:'medium'}}</span>
     </div>
   </li>
  </ul>
