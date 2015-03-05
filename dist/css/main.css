@@ -87,7 +87,7 @@ button {
   cursor: pointer; }
 
 .root-content {
-  padding: 4em 0 0 1em; }
+  padding: 4em 0 0 0; }
 
 .toolbar {
   background: #F4F4F4;
@@ -137,10 +137,14 @@ button {
 
 .textarea-container {
   position: relative;
-  width: 100%; }
+  width: 100%;
+  max-width: 550px; }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
+
+.user-wrap {
+  margin: 3em; }
 
 .reshare-select {
   -webkit-appearance: button;
@@ -212,6 +216,7 @@ h1 {
 .new-share__link {
   outline: none;
   margin-bottom: 1em;
+  max-width: 550px;
   font-size: 1.5em;
   height: 1.25em;
   width: 100%;
@@ -233,6 +238,7 @@ h1 {
   resize: none;
   outline: none;
   margin-bottom: 1em;
+  max-width: 550px;
   font-size: 1.5em;
   height: 1.25em;
   width: 100%;
@@ -279,7 +285,7 @@ h1 {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 2em 0 0 3em; }
+  padding: 2em 0 0 2em; }
 
 .shares-header {
   display: inline-block;
@@ -366,47 +372,65 @@ h1 {
 .comments-wrap {
   padding: 2em; }
 
+.unique-share {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-family: 'Raleway', sans-serif; }
+
+.unique-share__desc {
+  font-variant: small-caps;
+  display: block;
+  font-size: 1.75em;
+  font-weight: bold; }
+
+.unique-share__desc:first-letter {
+  text-transform: capitalize;
+  display: inline-block; }
+
+.unique-share__url {
+  font-size: .75em;
+  display: block;
+  color: #807d7f; }
+
 .new-comment {
   font-family: 'Raleway', sans-serif;
   color: #807d7f; }
 
-.class-name {
-  font-family: 'Raleway', sans-serif;
-  margin-left: 2em;
-  height: auto;
-  max-width: 600px;
-  color: #999;
-  font-weight: 400;
-  font-size: 22px;
-  min-width: 300px;
-  background: #fff;
+.comment-textarea {
+  max-height: 10em;
+  resize: none;
+  outline: none;
+  margin-bottom: 1em;
+  font-size: 1.25em;
+  height: 5em;
+  width: 100%;
   border-radius: 3px;
-  line-height: 1.5em;
-  border: none;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  transition: height 2s ease; }
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  vertical-align: middle;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+  max-width: 550px; }
 
-.class-name:focus {
+.comment-textarea:focus {
   background-color: #129db3;
   color: #f4efef; }
 
-.comments-header {
-  margin-top: 2em;
+.comment-text-count {
   font-family: 'Raleway', sans-serif;
-  color: #807d7f; }
-
-.comment-instance {
-  margin: 1em 0 0 2em;
-  font-family: 'Raleway', sans-serif;
-  color: #807d7f; }
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #aab3bf;
+  max-width: 30em; }
 
 .submit-comment {
   font-family: 'Raleway', sans-serif;
   padding: 1em;
   border-radius: 3px;
-  background: #129db3;
-  margin-left: 2em; }
+  background: #129db3; }
 
 .submit-comment:active {
   font-family: 'Raleway', sans-serif;
@@ -417,17 +441,59 @@ h1 {
 .submit-comment:hover {
   color: #807d7f; }
 
-.date-text {
-  padding-left: 1em;
-  color: black;
-  font-size: .8em;
-  font-weight: 700; }
+.comments-header {
+  margin-top: 2em;
+  font-family: 'Raleway', sans-serif;
+  color: #807d7f; }
 
-@media (max-width: 575px) {
+.comment-instance {
+  margin: 3em 0 0 1em;
+  font-family: 'Raleway', sans-serif;
+  color: #807d7f;
+  position: relative;
+  max-width: 550px; }
+
+.commenting-user {
+  font-size: 15px;
+  display: inline-block;
+  position: absolute;
+  top: -25px;
+  left: 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  background: #F4F4F4;
+  width: 100%;
+  color: #129db3; }
+
+.date-text {
+  color: #97d4d9;
+  font-size: .5em;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0.5em;
+  font-family: 'Raleway', sans-serif; }
+
+.comment-text {
+  font-family: 'Raleway', sans-serif;
+  height: auto;
+  color: #999;
+  font-size: 1em;
+  background: #fff;
+  border-radius: 3px;
+  line-height: 1.5em;
+  border: none;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  transition: height 2s ease;
+  text-align: left; }
+
+@media (max-width: 600px) {
   body {
     text-align: center; }
   .share-list {
-    overflow: auto; }
+    overflow: auto;
+    margin-right: 5em; }
   .votes {
     position: relative;
     top: 0;

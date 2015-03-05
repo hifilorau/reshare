@@ -1,5 +1,5 @@
 .root-content {
-  padding: 4em 0 0 1em;
+  padding: 4em 0 0 0;
 }
 
 .toolbar {
@@ -53,4 +53,5 @@
 .textarea-container {
   position: relative;
   width: 100%;
+  max-width: 550px;
 }
