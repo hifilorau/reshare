@@ -1,41 +1,32 @@
 
 
 <div class="comments-wrap">
-  <span><a href="{{vm.share.url }}">{{vm.share.description}}</a></span>
-  <h1 class="comments-page-header">Comments Page</h1>
+  <h1 class="comments-page-header">Leave a Comment</h1>
+  <div class="unique-share">
+    <a class="unique-share__desc" href="{{vm.share.url }}">{{vm.share.description | ellipsis: 50 }}</a>
+    <a class="unique-share__url" href="{{vm.share.url }}">({{vm.share.url | ellipsis: 50 }})</a>
+  </div>
+
   <!-- <span class="comment-link">{{share.description}}</span> -->
   <form class="new-comment" ng-submit="vm.addComment()">
-    <textarea class="class-name" ng-model="vm.comment.text" ng-trim="false" maxlength="500"></textarea>
-    <div>{{500 - vm.comment.text.length}} left</div>
+    <div class="textarea-container">
+      <textarea class="comment-textarea" ng-model="vm.comment.text" ng-trim="false" maxlength="500" placeholder="So how does this make you feel&#8230;" required></textarea>
+      <div class="comment-text-count">{{500 - vm.comment.text.length}}/500</div>
+    </div>
     <button class="submit-comment">Submit</button>
   </form>
 
-
-
-  <!-- this is hardcoded original link and description -->
-
-
-  <!-- <ul>
-    <li class="comment-instance">
-      <div class="comment-text">
-        This is a comment
-      </div>
-    </li>
-    <li class="comment-instance">
-      <div class="comment-text">
-        This is another comment
-      </div>
-    </li>
-  </ul>
-</div> -->
 
 
 <!-- // this is where comments will really go -->
 <h2 class="comments-header">Comments</h2>
   <ul>
   <li class="comment-instance" ng-repeat="comment in vm.comments | orderBy:'created'">
+    <div class="commenting-user">
+      @{{ comment.userId}}
+    </div>
     <div class="comment-text">
-      {{ comment.text }}<span class="date-text">{{comment.created | date:'medium'}}</span>
+      {{ comment.text }}<div class="date-text">{{comment.created | date:'medium'}}</div>
     </div>
   </li>
  </ul>
