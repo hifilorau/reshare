@@ -31,6 +31,7 @@
 .user-form {
   vertical-align: middle;
   position: relative;
+  padding: 2em;
 }
 
 .users-name {
@@ -39,6 +40,7 @@
 
 h1 {
   color: $accent-color-dark;
+  margin-left: 1em;
 }
 
 .add-user-button {
@@ -61,13 +63,10 @@ h1 {
 }
 
 .user-list {
-  // margin-bottom: 2em;
-  padding: 1em 0 1em 3em;
-  border-bottom-color: $accent-color-dark;
-  border-bottom-style: solid;
-  position: relative;
-  top: 2em;
+  margin: 2em 3em 0.5em 1em;
+  width: 21em;
+  padding: 1em 3em 1em 3em;
   font-family: $secondary-font;
-  width: 100%;
+  background-color: $alt-bg-color;
 
 }

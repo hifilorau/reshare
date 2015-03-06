@@ -170,13 +170,15 @@ button {
 
 .user-form {
   vertical-align: middle;
-  position: relative; }
+  position: relative;
+  padding: 2em; }
 
 .users-name {
   font-family: 'Raleway', sans-serif; }
 
 h1 {
-  color: #807d7f; }
+  color: #807d7f;
+  margin-left: 1em; }
 
 .add-user-button {
   font-family: 'Raleway', sans-serif;
@@ -195,13 +197,11 @@ h1 {
   color: #807d7f; }
 
 .user-list {
-  padding: 1em 0 1em 3em;
-  border-bottom-color: #807d7f;
-  border-bottom-style: solid;
-  position: relative;
-  top: 2em;
+  margin: 2em 3em 0.5em 1em;
+  width: 21em;
+  padding: 1em 3em 1em 3em;
   font-family: 'Raleway', sans-serif;
-  width: 100%; }
+  background-color: #F4F4F4; }
 
 .new-share__container {
   padding: 2em; }
