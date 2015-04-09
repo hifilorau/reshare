@@ -48,8 +48,6 @@ app.config(['$routeProvider', function ($routeProvider) {
     commentService.listComments(self.share._id);
   };
 
-
-
 }]);
 
 app.controller('MainNavCtrl',
@@ -65,76 +63,6 @@ app.controller('MainNavCtrl',
       return StringUtil.startsWith($location.path(), path);
     };
   }]);
-
-app.config(['$routeProvider', function($routeProvider) {
-  var routeDefinition = {
-    templateUrl: 'users/user.html',
-    controller: 'UserCtrl',
-    controllerAs: 'vm',
-    resolve: {
-      user: ['$route', 'usersService', function($route, usersService) {
-        var routeParams = $route.current.params;
-        return usersService.getByUserId(routeParams.userid);
-      }]
-    }
-  };
-
-  $routeProvider.when('/users/:userid', routeDefinition);
-}])
-.controller('UserCtrl', ['user', function (user) {
-  this.user = user;
-}]);
-
-app.factory('User', function () {
-  return function (spec) {
-    spec = spec || {};
-    return {
-      userId: spec.userId || '',
-      role: spec.role || 'user'
-    };
-  };
-});
-
-app.config(['$routeProvider', function($routeProvider) {
-  var routeDefinition = {
-    templateUrl: 'users/users.html',
-    controller: 'UsersCtrl',
-    controllerAs: 'vm',
-    resolve: {
-      users: ['usersService', function (usersService) {
-        return usersService.list();
-      }]
-    }
-  };
-
-  $routeProvider.when('/users', routeDefinition);
-}])
-.controller('UsersCtrl', ['users', 'usersService', 'User', function (users, usersService, User) {
-  var self = this;
-
-  self.users = users;
-
-  self.newUser = User();
-
-  self.addUser = function () {
-    // Make a copy of the 'newUser' object
-    var user = User(self.newUser);
-
-    // Add the user to our service
-    usersService.addUser(user).then(function () {
-      // If the add succeeded, remove the user from the users array
-      self.users = self.users.filter(function (existingUser) {
-        return existingUser.userId !== user.userId;
-      });
-
-      // Add the user to the users array
-      self.users.push(user);
-    });
-
-    // Clear our newUser property
-    self.newUser = User();
-  };
-}]);
 
 //making a filter
 //$filter('filter') (array, expression, comparator)
@@ -235,6 +163,76 @@ var self = this;
 
 }]);
 
+app.config(['$routeProvider', function($routeProvider) {
+  var routeDefinition = {
+    templateUrl: 'users/user.html',
+    controller: 'UserCtrl',
+    controllerAs: 'vm',
+    resolve: {
+      user: ['$route', 'usersService', function($route, usersService) {
+        var routeParams = $route.current.params;
+        return usersService.getByUserId(routeParams.userid);
+      }]
+    }
+  };
+
+  $routeProvider.when('/users/:userid', routeDefinition);
+}])
+.controller('UserCtrl', ['user', function (user) {
+  this.user = user;
+}]);
+
+app.factory('User', function () {
+  return function (spec) {
+    spec = spec || {};
+    return {
+      userId: spec.userId || '',
+      role: spec.role || 'user'
+    };
+  };
+});
+
+app.config(['$routeProvider', function($routeProvider) {
+  var routeDefinition = {
+    templateUrl: 'users/users.html',
+    controller: 'UsersCtrl',
+    controllerAs: 'vm',
+    resolve: {
+      users: ['usersService', function (usersService) {
+        return usersService.list();
+      }]
+    }
+  };
+
+  $routeProvider.when('/users', routeDefinition);
+}])
+.controller('UsersCtrl', ['users', 'usersService', 'User', function (users, usersService, User) {
+  var self = this;
+
+  self.users = users;
+
+  self.newUser = User();
+
+  self.addUser = function () {
+    // Make a copy of the 'newUser' object
+    var user = User(self.newUser);
+
+    // Add the user to our service
+    usersService.addUser(user).then(function () {
+      // If the add succeeded, remove the user from the users array
+      self.users = self.users.filter(function (existingUser) {
+        return existingUser.userId !== user.userId;
+      });
+
+      // Add the user to the users array
+      self.users.push(user);
+    });
+
+    // Clear our newUser property
+    self.newUser = User();
+  };
+}]);
+
 // A little string utility... no biggie
 app.factory('StringUtil', function() {
   return {
@@ -244,45 +242,6 @@ app.factory('StringUtil', function() {
     }
   };
 });
-
-app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
-  // My $http promise then and catch always
-  // does the same thing, so I'll put the
-  // processing of it here. What you probably
-  // want to do instead is create a convenience object
-  // that makes $http calls for you in a standard
-  // way, handling post, put, delete, etc
-  function get(url) {
-    return processAjaxPromise($http.get(url));
-  }
-
-  function processAjaxPromise(p) {
-    return p.then(function (result) {
-      return result.data;
-    })
-    .catch(function (error) {
-      $log.log(error);
-    });
-  }
-
-  return {
-    list: function () {
-      return get('/api/users');
-    },
-
-    getByUserId: function (userId) {
-      if (!userId) {
-        throw new Error('getByUserId requires a user id');
-      }
-
-      return get('/api/users/' + userId);
-    },
-
-    addUser: function (user) {
-      return processAjaxPromise($http.post('/api/users', user));
-    }
-  };
-}]);
 
 app.factory('commentService', ['$http', '$log', function($http, $log) {
   function post(url, data) {
@@ -378,6 +337,45 @@ app.factory('voteService', ['$http', function($http) {
 
     downvote: function (id) {
       return post('/api/res/' + id + '/votes', { vote: -1 });
+    }
+  };
+}]);
+
+app.factory('usersService', ['$http', '$q', '$log', function($http, $q, $log) {
+  // My $http promise then and catch always
+  // does the same thing, so I'll put the
+  // processing of it here. What you probably
+  // want to do instead is create a convenience object
+  // that makes $http calls for you in a standard
+  // way, handling post, put, delete, etc
+  function get(url) {
+    return processAjaxPromise($http.get(url));
+  }
+
+  function processAjaxPromise(p) {
+    return p.then(function (result) {
+      return result.data;
+    })
+    .catch(function (error) {
+      $log.log(error);
+    });
+  }
+
+  return {
+    list: function () {
+      return get('/api/users');
+    },
+
+    getByUserId: function (userId) {
+      if (!userId) {
+        throw new Error('getByUserId requires a user id');
+      }
+
+      return get('/api/users/' + userId);
+    },
+
+    addUser: function (user) {
+      return processAjaxPromise($http.post('/api/users', user));
     }
   };
 }]);

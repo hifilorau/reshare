@@ -33,6 +33,4 @@ app.config(['$routeProvider', function ($routeProvider) {
     commentService.listComments(self.share._id);
   };
 
-
-
 }]);

@@ -1,4 +1,4 @@
-// This is where any explicit script odering should
+// This is where any explicit script ordering should
 // be declared.
 module.exports = {
   app: [
